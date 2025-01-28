@@ -1,0 +1,52 @@
+# Common Configuration
+frontend:
+  url: http://localhost:3000
+
+backend:
+  url: http://localhost:8080
+
+website:
+  domain: localhost
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongo:27017/portfolio
+      auto-index-creation: true
+
+
+server:
+  port: 8080
+
+  error:
+    include-message: always
+
+logging:
+  level:
+    root: INFO
+    com.gouriny: DEBUG
+
+---
+# Test Configuration
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  data:
+    mongodb:
+      username: root
+      password: password
+      host: mongo
+      port: 27017
+      database: portfolio
+      authentication-database: admin
+      auto-index-creation: true
+
+
+de:
+  flap-doodle:
+    mongodb:
+      embedded:
+        version: 5.0.5
+
