@@ -1,16 +1,20 @@
 package com.example.portfoliobe.Biographysubdomain.datalayer;
 
 
-import jakarta.persistence.Id;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@Document(collection = "biographies")
 public class Biography {
 
     @Id
@@ -24,7 +28,7 @@ public class Biography {
     private String email;
     private String phoneNumber;
     private String address;
-    private String resumeUrl;
+
 
 
 }

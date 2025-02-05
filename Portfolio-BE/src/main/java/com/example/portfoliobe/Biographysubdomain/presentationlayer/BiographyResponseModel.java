@@ -19,5 +19,5 @@ public class BiographyResponseModel {
     private String email;
     private String phoneNumber;
     private String address;
-    private String resumeUrl;
+
 }

@@ -29,6 +29,11 @@ public class MyBiographyDataLoader implements CommandLineRunner {
                 .linkedinUrl("https://www.linkedin.com/in/edward-nasser-97616a298/")
                 .build();
 
+        Flux.just(biography)
+                .flatMap(biographyRepository::insert)
+                .log()
+                .subscribe();
+
      }
 
 }
