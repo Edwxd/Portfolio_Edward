@@ -1,63 +1,67 @@
-  import React, { JSX, useEffect, useState } from "react";
-  import { fetchBiography } from "../api/getBiography"; // Import the fetchBiography method
-  import { biographyRequestModel } from "../Models/biographyRequestModel";
+import React, { useEffect, useState } from "react";
+import { fetchBiography } from "../api/getBiography";
+import { biographyRequestModel } from "../Models/biographyRequestModel";
+import "./biographyFormBox.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-  export default function BiographyPage(): JSX.Element {
-    const [biography, setBiography] =   useState<biographyRequestModel[] | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+export default function BiographyPage() {
+  const [biography, setBiography] = useState<biographyRequestModel[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
-    useEffect(() => {
-      const loadBiography = async () => {
-        try {
-          const data = await fetchBiography();
-          if(data){
-            
-
-
-            setBiography(data);
-            console.log("Biography data:", data);
-
-          }
-
-        } catch (err) {
-          console.error("Error fetching biography:", err); // Log the error
-          setError("Failed to fetch the biography");
-        } finally {
-          setLoading(false);
+  useEffect(() => {
+    const loadBiography = async () => {
+      try {
+        const data = await fetchBiography();
+        if (data) {
+          setBiography(data);
+          console.log("Biography data:", data);
         }
-      };
+      } catch (err) {
+        console.error("Error fetching biography:", err);
+        setError("Failed to fetch the biography");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      loadBiography(); // Trigger the API call on mount
-    }, []); // Empty dependency array to run this only on mount
+    loadBiography();
+  }, []);
 
-    // Conditionally render loading or error states
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!biography) return <p>No biography data available.</p>;
 
-    if (!biography) {
-      console.log("Biography is null");
-      return <p>No biography data available.</p>;
-    }
+  return (
+    <div
+      className={`biography-container ${expanded ? "expanded" : ""}`}
+      onClick={() => setExpanded(!expanded)}
+    >
+      <h1>{biography[0].name}</h1>
 
-    console.log("Biography data:", biography);
+      {!expanded && <p className="click-to-see-more">Click to see more</p>}
 
-    console.log("Biography data in render:", biography); 
-    
-    console.log(biography[0].name)
+      <img src={biography[0].imageUrl} alt="Biography" className="profile-picture-container" />
 
+      <div className="biography-text-container">
+        <div className="biography-text">
+          <div className="divider"></div>
+          <p>{biography[0].description}</p>
+          <div className="divider"></div>
 
-    return (
-      <div>
-        
-        <h1>{biography[0].name}</h1>
-        <p>{biography[0].description}</p>
-        <img src={biography[0].imageUrl} alt="Biography" />
-        <p>{biography[0].githubUrl}</p>
-        <p>{biography[0].linkedinUrl}</p>
-        <p>{biography[0].email}</p>
-        <p>{biography[0].phoneNumber}</p>
-        <p>{biography[0].address}</p>
+          <div className="social-links">
+            <a href={biography[0].githubUrl} target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faGithub} className="social-icon" />
+            </a>
+            <a href={biography[0].linkedinUrl} target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
+            </a>
+          </div>
+
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}

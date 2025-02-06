@@ -1,23 +1,14 @@
-
 import BiographyForm from "../components/biographyFormBox";
+import "./homePage.css";
 
 
 export default function HomePage() {
   return (
     <div>
-      <h1>Edward Nasser</h1>
-      <p>Welcome to my journey !</p>
-
-      <div>
-        <BiographyForm />
-
-      </div>
-
-
-    
-      
-      
-
+      <BiographyForm />
+      <footer>
+        <p>© 2025 Edward_Nasser_Portfolio</p>
+      </footer>
     </div>
   );
 }
