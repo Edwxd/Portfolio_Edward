@@ -23,7 +23,7 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$/Portfolio-FE" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/Portfolio-FE" />
+            <option value="$PROJECT_DIR$/portfolio-fe" />
           </set>
         </option>
       </GradleProjectSettings>
