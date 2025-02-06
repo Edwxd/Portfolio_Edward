@@ -3,10 +3,10 @@ import { biographyRequestModel } from "../Models/biographyRequestModel";
 
 
 export const fetchBiography = async (
-): Promise<biographyRequestModel> => {
+): Promise<biographyRequestModel[]> => {
 
     try{
-        const response = await axiosInstance.get<biographyRequestModel>(`/biography`);
+        const response = await axiosInstance.get<biographyRequestModel[]>(`/biography`);
         console.log(response.data);
 
         return response.data;

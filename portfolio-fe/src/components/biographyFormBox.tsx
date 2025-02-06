@@ -3,7 +3,7 @@
   import { biographyRequestModel } from "../Models/biographyRequestModel";
 
   export default function BiographyPage(): JSX.Element {
-    const [biography, setBiography] =   useState<biographyRequestModel | null>(null);
+    const [biography, setBiography] =   useState<biographyRequestModel[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -42,18 +42,22 @@
 
     console.log("Biography data:", biography);
 
-    console.log("Biography data in render:", biography);  // Add this to see the current state
+    console.log("Biography data in render:", biography); 
+    
+    console.log(biography[0].name)
+
 
     return (
       <div>
-        <h1>{biography.name}</h1>
-        <p>{biography.description}</p>
-        <img src={biography.imageUrl} alt="Biography" />
-        <p>{biography.githubUrl}</p>
-        <p>{biography.linkedinUrl}</p>
-        <p>{biography.email}</p>
-        <p>{biography.phoneNumber}</p>
-        <p>{biography.address}</p>
+        
+        <h1>{biography[0].name}</h1>
+        <p>{biography[0].description}</p>
+        <img src={biography[0].imageUrl} alt="Biography" />
+        <p>{biography[0].githubUrl}</p>
+        <p>{biography[0].linkedinUrl}</p>
+        <p>{biography[0].email}</p>
+        <p>{biography[0].phoneNumber}</p>
+        <p>{biography[0].address}</p>
       </div>
     );
   }
