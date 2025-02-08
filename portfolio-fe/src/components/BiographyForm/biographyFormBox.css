@@ -1,4 +1,4 @@
-/* Biography container styles */
+/* Biography container */
 .biography-container {
     width: 100%;
     margin: 50px auto;
@@ -8,25 +8,32 @@
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out, max-width 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out, 
+                max-width 0.4s ease-in-out, max-height 0.4s ease-in-out, padding 0.3s ease;
     font-family: "Poppins", sans-serif;
-    max-width: 400px; /* Initial max-width */
+    max-width: 400px;
     width: 100%;
-    box-sizing: border-box; /* Prevents content from overflowing */
-    overflow-y: auto; /* Makes the biography box scrollable */
-    max-height: 60vh; /* Set a maximum height for the biography box */
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* Expanded state styles */
+/* When expanded */
 .biography-container.expanded {
-    max-width: 900px; /* New max-width on expand */
-    max-height: 90vh; /* New max-height on expand */
-    padding: 30px; /* New padding on expand */
+    max-width: 900px;
+    max-height: 1000px;  /* Set a reasonable max height */
+    padding: 30px;
+    background: #fff;
+}
+
+/* Close animation - smooth collapse */
+.biography-container:not(.expanded) {
+    max-height: 300px;  /* Shrinks smoothly */
+    padding: 20px;
 }
 
 /* Hover effect */
 .biography-container:hover {
-    background: rgba(147, 112, 219, 0.3);
+    background: #fff;
     transform: scale(1.02);
 }
 
@@ -57,12 +64,12 @@
 /* Biography Content */
 .biography-text-container {
     overflow: hidden;
-    max-height: 50px;
-    transition: max-height 0.5s ease-in-out;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .biography-container.expanded .biography-text-container {
-    max-height: 600px; /* Adjust based on content */
+    max-height: 600px;
 }
 
 .biography-text {
@@ -91,25 +98,6 @@
 .biography-container:hover .profile-picture-container {
     transform: scale(1.05);
     border-color: #7b5ec9;
-}
-
-/* Social Media Icons */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 15px;
-}
-
-.social-icon {
-    font-size: 35px;
-    color: #444;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.social-icon:hover {
-    transform: scale(1.2);
-    color: #9370DB; /* Theme color */
 }
 
 .biography-text p {
