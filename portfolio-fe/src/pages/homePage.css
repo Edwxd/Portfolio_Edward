@@ -1,0 +1,66 @@
+/* Body styles */
+body {
+  background: linear-gradient(to bottom, rgba(147, 112, 219, 1), rgba(147, 112, 219, 0.3));
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;  /* Allows content to flow vertically */
+  justify-content: flex-start; /* Aligns content at the top */
+  align-items: center;
+  text-align: center;
+  color: white;
+  min-height: 100vh; /* Ensures the page takes at least the full height of the viewport */
+}
+
+/* Footer styles */
+footer {
+
+  color: white;
+  padding-top: 230px;
+  width: 100%;
+  text-align: center;
+  margin-top: auto; /* Pushes the footer to the bottom of the page */
+}
+
+/* Main container for Biography and Contact Info */
+.home-container {
+  display: flex;
+  justify-content: space-between;  /* Distribute space between items */
+  gap: 30px;  /* Space between the two containers */
+  padding: 50px;
+  width: 100%;
+  max-width: 1200px;  /* Optional: limit max width */
+  margin: 0 auto;  /* Center the content */
+}
+
+/* Biography container */
+.biography-home-container {
+  flex: 1;  /* Takes equal space */
+}
+
+/* Contact Info container */
+.contac-home-container {
+  flex: 1;  /* Takes equal space */
+}
+
+/* Footer styles */
+footer {
+  color: white;
+  padding-top: 230px;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Responsive behavior */
+@media (max-width: 900px) {
+  .home-container {
+    flex-direction: column; /* Stack containers vertically */
+    align-items: center;    /* Center align items */
+    gap: 20px;  /* Reduce gap for smaller screens */
+  }
+
+  .biography-home-container, .contac-home-container {
+    max-width: 100%;  /* Allow full width */
+  }
+}
