@@ -5,5 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface CommentsRepository extends ReactiveMongoRepository<Comments, String> {
 
-    Mono<Comments> getCommentsByCommentId(String commentId);
+    Mono<Comments> getCommentsByCommentIdentifier_CommentId(String commentIdentifier);
 }

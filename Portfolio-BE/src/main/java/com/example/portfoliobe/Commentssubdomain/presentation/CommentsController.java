@@ -31,7 +31,7 @@ public class CommentsController {
     public Mono<ResponseEntity<CommentsResponseModel>> getCommentById(@PathVariable String commentId) {
         return Mono.just(commentId)
                 .filter(id -> id.length() == 36)
-                .flatMap(commentsService::getCommentById)
+                .flatMap(commentsService::getCommentByCommentId)
                 .map(ResponseEntity::ok);
     }
 

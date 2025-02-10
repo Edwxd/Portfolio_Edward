@@ -22,7 +22,7 @@ public class Comments {
     private String id;
 
     @Embedded
-    private CommentIdentifier commentId;
+    private CommentIdentifier commentIdentifier;
     private String name;
     private String email;
     private String comment;

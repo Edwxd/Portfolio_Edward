@@ -17,10 +17,10 @@ public class BiographyController {
         this.biographyService = biographyService;
     }
 
-@GetMapping(value = "", produces= MediaType.APPLICATION_JSON_VALUE)
-public Flux<BiographyResponseModel> getMyBiography() {
-    return biographyService.getMyBiography();
+    @GetMapping(value = "", produces= MediaType.APPLICATION_JSON_VALUE)
+    public Flux<BiographyResponseModel> getMyBiography() {
+        return biographyService.getMyBiography();
 
-}
+    }
 
 }

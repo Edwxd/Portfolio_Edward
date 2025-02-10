@@ -7,6 +7,10 @@ import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
 import com.example.portfoliobe.Commentssubdomain.datalayer.Comments;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsRequestModel;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsResponseModel;
+import com.example.portfoliobe.Projectssubdomain.datalayer.ProjectIdentifier;
+import com.example.portfoliobe.Projectssubdomain.datalayer.Projects;
+import com.example.portfoliobe.Projectssubdomain.presentationlayer.ProjectsRequestModel;
+import com.example.portfoliobe.Projectssubdomain.presentationlayer.ProjectsResponseModel;
 import org.springframework.beans.BeanUtils;
 
 public class EntityModelUtils {
@@ -44,7 +48,7 @@ public class EntityModelUtils {
 
     public static Comments toCommentsEntity(CommentsRequestModel commentsRequestModel){
         return Comments.builder()
-                .commentId(new CommentIdentifier())
+                .commentIdentifier(new CommentIdentifier())
                 .name(commentsRequestModel.getComment())
                 .email(commentsRequestModel.getEmail())
                 .name(commentsRequestModel.getName())
@@ -54,11 +58,36 @@ public class EntityModelUtils {
     public static CommentsResponseModel toCommentsResponseModel(Comments comments){
         CommentsResponseModel commentsResponseModel = new CommentsResponseModel();
         BeanUtils.copyProperties(comments, commentsResponseModel);
-        commentsResponseModel.setCommentId(comments.getCommentId().getCommentId());
+        commentsResponseModel.setCommentIdentifier(comments.getCommentIdentifier().getCommentId());
         commentsResponseModel.setName(comments.getName());
         commentsResponseModel.setEmail(comments.getEmail());
         commentsResponseModel.setComment(comments.getComment());
         return commentsResponseModel;
+    }
+
+    public static Projects toProjectsEntity(ProjectsRequestModel projectsRequestModel){
+        return Projects.builder()
+                .projectIdentifier(new ProjectIdentifier())
+                .name(projectsRequestModel.getName())
+                .description(projectsRequestModel.getDescription())
+                .technologies(projectsRequestModel.getTechnologies())
+                .startDate(projectsRequestModel.getStartDate())
+                .endDate(projectsRequestModel.getEndDate())
+                .projectShowcase(projectsRequestModel.getProjectShowcase())
+                .build();
+    }
+
+    public static ProjectsResponseModel toProjectsResponseModel(Projects projects){
+        ProjectsResponseModel projectsResponseModel = new ProjectsResponseModel();
+        BeanUtils.copyProperties(projects, projectsResponseModel);
+        projectsResponseModel.setProjectId(projects.getProjectIdentifier().getProjectId());
+        projectsResponseModel.setName(projects.getName());
+        projectsResponseModel.setDescription(projects.getDescription());
+        projectsResponseModel.setTechnologies(projects.getTechnologies());
+        projectsResponseModel.setStartDate(projects.getStartDate());
+        projectsResponseModel.setEndDate(projects.getEndDate());
+        projectsResponseModel.setProjectShowcase(projects.getProjectShowcase());
+        return projectsResponseModel;
     }
 
 

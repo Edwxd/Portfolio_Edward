@@ -6,6 +6,9 @@ import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyReq
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
 import com.example.portfoliobe.Commentssubdomain.datalayer.Comments;
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentsRepository;
+import com.example.portfoliobe.Projectssubdomain.datalayer.ProjectIdentifier;
+import com.example.portfoliobe.Projectssubdomain.datalayer.Projects;
+import com.example.portfoliobe.Projectssubdomain.datalayer.ProjectsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,9 @@ public class MyBiographyDataLoader implements CommandLineRunner {
 
     @Autowired
     private CommentsRepository commentsRepository;
+
+    @Autowired
+    private ProjectsRepository projectsRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -49,17 +55,66 @@ public class MyBiographyDataLoader implements CommandLineRunner {
 
 
         Comments comments1 = Comments.builder()
-                .commentId(new CommentIdentifier())
+                .commentIdentifier(new CommentIdentifier())
                 .name("Erik St-Louis")
                 .email("erik99@gmail.com")
                 .comment("Love your work. Keep it up!")
                 .build();
 
         Comments comments2 = Comments.builder()
-                .commentId(new CommentIdentifier())
+                .commentIdentifier(new CommentIdentifier())
                 .name("David Hall")
                 .email("DavidH@gmail.com")
                 .comment("Would love to work with you in the future. Good work!")
+                .build();
+
+
+        Projects project1 = Projects.builder()
+                .projectIdentifier(new ProjectIdentifier())
+                .name("League Alerts, Article Web Application")
+                .description("◦ Collaborated in a team of 4-5 students to develop an article management system from scratch for a client.\n" +
+                        "◦ Implemented features allowing authors to perform CRUD operations on articles, and users to read, share,\n" +
+                        "like, and comment on content.")
+                .technologies("Java, React.js, HTML, CSS, JavaScript, MongoDB, Jira, GitHub, Agile/Scrum, Postman, Docker")
+                .startDate("September 2024")
+                .endDate("February 2025")
+                .projectShowcase("")
+                .build();
+
+        Projects project2 = Projects.builder()
+                .projectIdentifier(new ProjectIdentifier())
+                .name("Pet Clinic SCRUM Project: Veterinarian Clinic Management Application")
+                .description("◦ Contributed to a large-scale project involving 7 teams, each responsible for specific services.\n" +
+                        "◦ Focused on the Veterinarian Management service, overseeing CRUD operations for veterinarian profiles.")
+                .technologies("Java, React.js, HTML, JavaScript, CSS, TypeScript, MongoDB, PostgreSql, Jira, GitHub, Agile/Scrum, Postman, Docker")
+                .startDate("September 2024")
+                .endDate("October 2025")
+                .projectShowcase("")
+                .build();
+
+
+        Projects project3 = Projects.builder()
+                .projectIdentifier(new ProjectIdentifier())
+                .name("• Photo Online Printing Web Application: Microservice Application")
+                .description("◦ Independently developed the full back-end of a photo-ordering service, handling CRUD operations for\n" +
+                        "customer orders.")
+                .technologies("Java, MySQL, GitHub, N-Tier Architecture, Postman, Docker")
+                .startDate("January 2024")
+                .endDate("May 2024")
+                .projectShowcase("")
+                .build();
+
+
+        Projects project4 = Projects.builder()
+                .projectIdentifier(new ProjectIdentifier())
+                .name("Project Alien: OpenWorld 2D Top Down Survival Game")
+                .description("◦ In teams of two, create a game from scratch using all knowledge learned throughout the course, such as\n" +
+                        "tilemaps, gameobjects, raycasting, animated tiles, animation, scripting, and more.\n" +
+                        "◦ Game is still in development as I am trying to gain more experience in this field.")
+                .technologies("C#, Unity, Unity Version Control")
+                .startDate("February 2024")
+                .endDate("On Going")
+                .projectShowcase("")
                 .build();
 
 
@@ -74,6 +129,10 @@ public class MyBiographyDataLoader implements CommandLineRunner {
                 .log()
                 .subscribe();
 
+        Flux.just(project1, project2, project3, project4)
+                .flatMap(projectsRepository::insert)
+                .log()
+                .subscribe();
 
 
      }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommentsResponseModel {
 
-    private String commentId;
+    private String commentIdentifier;
     private String name;
     private String email;
     private String comment;
