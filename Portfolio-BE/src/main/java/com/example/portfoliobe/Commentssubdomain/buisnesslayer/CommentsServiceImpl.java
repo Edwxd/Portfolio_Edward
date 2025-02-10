@@ -23,8 +23,8 @@ public class CommentsServiceImpl implements CommentsService{
     }
 
     @Override
-    public Mono<CommentsResponseModel> getCommentById(String id) {
-        return commentsRepository.getCommentsByCommentId(id)
+    public Mono<CommentsResponseModel> getCommentByCommentId(String commentId) {
+        return commentsRepository.getCommentsByCommentIdentifier_CommentId(commentId)
                 .map(EntityModelUtils::toCommentsResponseModel);
     }
 
@@ -37,4 +37,6 @@ public class CommentsServiceImpl implements CommentsService{
                 .map(EntityModelUtils::toCommentsResponseModel);
 
     }
+
+
 }

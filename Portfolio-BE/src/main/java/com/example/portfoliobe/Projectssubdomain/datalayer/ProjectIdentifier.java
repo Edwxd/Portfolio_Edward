@@ -9,16 +9,16 @@ import java.util.UUID;
 @Getter
 public class ProjectIdentifier {
 
-    private String projectIdentifier;
+    private String projectId;
 
 
 
     public ProjectIdentifier(String projectIdentifier) {
-        this.projectIdentifier = projectIdentifier;
+        this.projectId = projectIdentifier;
     }
 
     public ProjectIdentifier() {
-        this.projectIdentifier = UUID.randomUUID().toString();
+        this.projectId = UUID.randomUUID().toString();
     }
 
 }

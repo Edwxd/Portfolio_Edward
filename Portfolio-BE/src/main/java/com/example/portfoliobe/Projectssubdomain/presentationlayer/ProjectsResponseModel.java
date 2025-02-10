@@ -17,5 +17,8 @@ public class ProjectsResponseModel {
     private String name;
     private String description;
     private String technologies;
+    private String startDate;
+    private String endDate;
+    private String projectShowcase;
 
 }

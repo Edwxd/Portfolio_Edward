@@ -5,5 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface ProjectsRepository extends ReactiveMongoRepository<Projects, String> {
 
-    Mono<Projects> getProjectById(String id);
+    Mono<Projects> findProjectsByProjectIdentifier_ProjectId(String projectId);
+
 }

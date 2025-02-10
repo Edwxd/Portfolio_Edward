@@ -27,8 +27,8 @@ public class ProjectsController {
     }
 
     @GetMapping(value = "/{projectId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<ProjectsResponseModel> getProjectById(String projectId) {
-        return projectsService.getProjectById(projectId);
+    public Mono<ProjectsResponseModel> getProjectById(@PathVariable String projectId) {
+        return projectsService.getProjectByProjectId(projectId);
     }
 
 
@@ -44,4 +44,15 @@ public class ProjectsController {
                                 .body(null)));
     }
 
+    @PutMapping(value = "/{projectId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<ProjectsResponseModel>> updateProject(@PathVariable String projectId, @RequestBody ProjectsRequestModel project) {
+        return projectsService.updateProject(projectId, Mono.just(project))
+                .map(ProjectsResponseModel -> ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body(ProjectsResponseModel))
+                .onErrorResume(e -> Mono.just(
+                        ResponseEntity
+                                .status(HttpStatus.BAD_REQUEST)
+                                .body(null)));
+    }
 }

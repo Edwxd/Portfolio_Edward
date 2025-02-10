@@ -16,5 +16,8 @@ public class ProjectsRequestModel {
     private String name;
     private String description;
     private String technologies;
+    private String startDate;
+    private String endDate;
+    private String projectShowcase;
 
 }

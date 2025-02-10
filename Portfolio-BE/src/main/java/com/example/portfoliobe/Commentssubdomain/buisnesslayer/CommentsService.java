@@ -10,7 +10,9 @@ public interface CommentsService {
 
     Flux<CommentsResponseModel> getAllComments();
 
-    Mono<CommentsResponseModel> getCommentById(String id);
+    Mono<CommentsResponseModel> getCommentByCommentId(String CommentId);
 
     Mono<CommentsResponseModel> createComment(Mono<CommentsRequestModel> commentsRequestModelMono);
+
+
 }

@@ -22,8 +22,8 @@ public class ProjectServiceImpl implements ProjectsService{
     }
 
     @Override
-    public Mono<ProjectsResponseModel> getProjectById(String projectId) {
-        return projectsRepository.getProjectById(projectId).map(EntityModelUtils::toProjectsResponseModel);
+    public Mono<ProjectsResponseModel> getProjectByProjectId(String projectId) {
+        return projectsRepository.findProjectsByProjectIdentifier_ProjectId(projectId).map(EntityModelUtils::toProjectsResponseModel);
     }
 
     @Override
@@ -33,5 +33,15 @@ public class ProjectServiceImpl implements ProjectsService{
                 .map(EntityModelUtils::toProjectsEntity)
                 .flatMap(projectsRepository::save)
                 .map(EntityModelUtils::toProjectsResponseModel);
+    }
+
+    @Override
+    public Mono<ProjectsResponseModel> updateProject(String projectId, Mono<ProjectsRequestModel> projectsRequestModelMono) {
+        return projectsRepository.findProjectsByProjectIdentifier_ProjectId(projectId)
+                .flatMap(foundProject -> projectsRequestModelMono
+                        .map(EntityModelUtils::toProjectsEntity)
+                        .doOnNext(updatedProject -> updatedProject.setId(foundProject.getId()))
+                        .flatMap(projectsRepository::save)
+                        .map(EntityModelUtils::toProjectsResponseModel));
     }
 }

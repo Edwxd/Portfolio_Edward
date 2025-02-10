@@ -10,7 +10,9 @@ public interface ProjectsService {
 
     Flux<ProjectsResponseModel> getAllProjects();
 
-    Mono<ProjectsResponseModel> getProjectById(String id);
+    Mono<ProjectsResponseModel> getProjectByProjectId(String projectId);
 
     Mono<ProjectsResponseModel> createProject(Mono<ProjectsRequestModel> project);
+
+    Mono<ProjectsResponseModel> updateProject(String projectId, Mono<ProjectsRequestModel> project);
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,10 +16,13 @@ public class Projects {
     @Id
     private String id;
 
-    private ProjectIdentifier projectId;
+    private ProjectIdentifier projectIdentifier;
     private String name;
     private String description;
     private String technologies;
+    private String startDate;
+    private String endDate;
+    private String projectShowcase;
 
 
 }
