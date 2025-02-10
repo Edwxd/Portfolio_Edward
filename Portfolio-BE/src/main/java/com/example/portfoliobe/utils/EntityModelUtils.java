@@ -3,6 +3,7 @@ package com.example.portfoliobe.utils;
 import com.example.portfoliobe.Biographysubdomain.datalayer.Biography;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyRequestModel;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyResponseModel;
+import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
 import com.example.portfoliobe.Commentssubdomain.datalayer.Comments;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsRequestModel;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsResponseModel;
@@ -43,6 +44,7 @@ public class EntityModelUtils {
 
     public static Comments toCommentsEntity(CommentsRequestModel commentsRequestModel){
         return Comments.builder()
+                .commentId(new CommentIdentifier())
                 .name(commentsRequestModel.getComment())
                 .email(commentsRequestModel.getEmail())
                 .name(commentsRequestModel.getName())
@@ -52,11 +54,13 @@ public class EntityModelUtils {
     public static CommentsResponseModel toCommentsResponseModel(Comments comments){
         CommentsResponseModel commentsResponseModel = new CommentsResponseModel();
         BeanUtils.copyProperties(comments, commentsResponseModel);
-        commentsResponseModel.setCommentId(comments.getCommentId());
+        commentsResponseModel.setCommentId(comments.getCommentId().getCommentId());
         commentsResponseModel.setName(comments.getName());
         commentsResponseModel.setEmail(comments.getEmail());
         commentsResponseModel.setComment(comments.getComment());
         return commentsResponseModel;
     }
+
+
 
 }

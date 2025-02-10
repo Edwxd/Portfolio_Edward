@@ -1,6 +1,7 @@
 package com.example.portfoliobe.Commentssubdomain.buisnesslayer;
 
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentsRepository;
+import com.example.portfoliobe.Commentssubdomain.presentation.CommentsRequestModel;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsResponseModel;
 import com.example.portfoliobe.utils.EntityModelUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,12 @@ public class CommentsServiceImpl implements CommentsService{
     }
 
     @Override
-    public Mono<CommentsResponseModel> createComment(CommentsResponseModel comment) {
-        return null;
+    public Mono<CommentsResponseModel> createComment(Mono<CommentsRequestModel> commentsRequestModelMono) {
+        return commentsRequestModelMono
+                .filter(comments -> comments.getComment() != null && !comments.getComment().isEmpty())
+                .map(EntityModelUtils::toCommentsEntity)
+                .flatMap(commentsRepository::save)
+                .map(EntityModelUtils::toCommentsResponseModel);
+
     }
 }
