@@ -3,18 +3,25 @@ package com.example.portfoliobe.utils.DataLoader;
 import com.example.portfoliobe.Biographysubdomain.datalayer.Biography;
 import com.example.portfoliobe.Biographysubdomain.datalayer.BiographyRepository;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyRequestModel;
+import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
+import com.example.portfoliobe.Commentssubdomain.datalayer.Comments;
+import com.example.portfoliobe.Commentssubdomain.datalayer.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Service
 public class MyBiographyDataLoader implements CommandLineRunner {
 
     @Autowired
     private BiographyRepository biographyRepository;
+
+    @Autowired
+    private CommentsRepository commentsRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -40,11 +47,38 @@ public class MyBiographyDataLoader implements CommandLineRunner {
                 .linkedinUrl("https://www.linkedin.com/in/edward-nasser-97616a298/")
                 .build();
 
+
+        Comments comments1 = Comments.builder()
+                .commentId(new CommentIdentifier())
+                .name("Erik St-Louis")
+                .email("erik99@gmail.com")
+                .comment("Love your work. Keep it up!")
+                .build();
+
+        Comments comments2 = Comments.builder()
+                .commentId(new CommentIdentifier())
+                .name("David Hall")
+                .email("DavidH@gmail.com")
+                .comment("Would love to work with you in the future. Good work!")
+                .build();
+
+
+
         Flux.just(biography)
                 .flatMap(biographyRepository::insert)
                 .log()
                 .subscribe();
 
+        Flux.just(comments1, comments2)
+                .flatMap(commentsRepository::insert)
+                .log()
+                .subscribe();
+
+
+
      }
+
+
+
 
 }
