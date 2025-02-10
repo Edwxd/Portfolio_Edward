@@ -7,6 +7,10 @@ import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
 import com.example.portfoliobe.Commentssubdomain.datalayer.Comments;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsRequestModel;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsResponseModel;
+import com.example.portfoliobe.Projectssubdomain.datalayer.ProjectIdentifier;
+import com.example.portfoliobe.Projectssubdomain.datalayer.Projects;
+import com.example.portfoliobe.Projectssubdomain.presentationlayer.ProjectsRequestModel;
+import com.example.portfoliobe.Projectssubdomain.presentationlayer.ProjectsResponseModel;
 import org.springframework.beans.BeanUtils;
 
 public class EntityModelUtils {
@@ -59,6 +63,25 @@ public class EntityModelUtils {
         commentsResponseModel.setEmail(comments.getEmail());
         commentsResponseModel.setComment(comments.getComment());
         return commentsResponseModel;
+    }
+
+    public static Projects toProjectsEntity(ProjectsRequestModel projectsRequestModel){
+        return Projects.builder()
+                .projectId(new ProjectIdentifier())
+                .name(projectsRequestModel.getName())
+                .description(projectsRequestModel.getDescription())
+                .technologies(projectsRequestModel.getTechnologies())
+                .build();
+    }
+
+    public static ProjectsResponseModel toProjectsResponseModel(Projects projects){
+        ProjectsResponseModel projectsResponseModel = new ProjectsResponseModel();
+        BeanUtils.copyProperties(projects, projectsResponseModel);
+        projectsResponseModel.setProjectId(projects.getProjectId().getProjectIdentifier());
+        projectsResponseModel.setName(projects.getName());
+        projectsResponseModel.setDescription(projects.getDescription());
+        projectsResponseModel.setTechnologies(projects.getTechnologies());
+        return projectsResponseModel;
     }
 
 

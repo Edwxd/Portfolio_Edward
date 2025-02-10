@@ -64,6 +64,9 @@ public class MyBiographyDataLoader implements CommandLineRunner {
 
 
 
+
+
+
         Flux.just(biography)
                 .flatMap(biographyRepository::insert)
                 .log()
