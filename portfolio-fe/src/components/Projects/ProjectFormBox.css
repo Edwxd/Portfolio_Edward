@@ -1,0 +1,137 @@
+/* Project container */
+.project-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Project Title */
+.project-container h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 15px;
+    text-align: center;
+}
+/* Project Title */
+.project-container h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Project Text Container */
+.project-text-container {
+    width: 80%; /* Reduce width to focus text */
+    max-width: 500px; /* Prevent too-wide text */
+    margin: 0 auto; /* Center the content */
+    text-align: center; /* Align text neatly */
+    text-justify: inter-word; /* Improve word spacing */
+    padding: 15px;
+    color: #333;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    line-height: 1.6; /* Improve readability */
+}
+
+/* Ensure paragraphs maintain equal width */
+.project-text-container p {
+    max-width: 100%; /* Keep within container */
+    word-wrap: break-word; /* Prevent overflow */
+    font-size: 16px;
+}
+
+
+/* Slide Left Animation */
+.slide-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Slide Right Animation */
+.slide-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Active Slide */
+.slide-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Bold Text */
+.project-text p strong {
+    color: #444;
+}
+
+/* Divider */
+.divider {
+    width: 50%;
+    height: 2px;
+    background: #9370DB;
+    margin: 15px auto;
+    opacity: 0.7;
+}
+
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 35px;
+    background: rgba(128, 128, 128, 0.8);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.slider-button-left {
+    left: 0;
+}
+
+.slider-button-right {
+    right: 0;
+}
+
+/* Hover Effect */
+.slider-button:hover {
+    background: rgba(90, 90, 90, 1);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Social Media Icons */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    font-size: 35px;
+    color: #444;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    color: #9370DB; /* Theme color */
+}

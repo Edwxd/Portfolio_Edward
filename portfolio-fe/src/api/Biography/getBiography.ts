@@ -1,5 +1,5 @@
-import  axiosInstance  from "../axiosInstance/axiosInstance"
-import { biographyRequestModel } from "../Models/biographyRequestModel";
+import  axiosInstance  from "../../axiosInstance/axiosInstance"
+import { biographyRequestModel } from "../../Models/Biography/biographyRequestModel";
 
 
 export const fetchBiography = async (

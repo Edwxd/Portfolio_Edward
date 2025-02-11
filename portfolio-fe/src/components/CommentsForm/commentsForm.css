@@ -1,0 +1,76 @@
+/* CommentForm.css */
+
+/* Form Container */
+.comment-form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    margin: 50px auto; /* Center the form with space around */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack the form elements vertically */
+    gap: 15px; /* Space between form elements */
+  }
+  
+  /* Heading */
+  .comment-form-heading {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Input and Textarea */
+  .comment-form-input,
+  .comment-form-textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .comment-form-input:focus,
+  .comment-form-textarea:focus {
+    border-color: #5b9bd5;
+    outline: none;
+  }
+  
+  /* Button */
+  .comment-form-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment-form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error Message */
+  .comment-form-error {
+    font-size: 14px;
+    color: red;
+    margin-top: 10px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 600px) {
+    .comment-form-container {
+      width: 90%;
+    }
+    .comment-form-button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  

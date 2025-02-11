@@ -14,5 +14,6 @@ public interface CommentsService {
 
     Mono<CommentsResponseModel> createComment(Mono<CommentsRequestModel> commentsRequestModelMono);
 
+    Mono<Void> acceptComment(String commentId);
 
 }

@@ -52,6 +52,7 @@ public class EntityModelUtils {
                 .name(commentsRequestModel.getComment())
                 .email(commentsRequestModel.getEmail())
                 .name(commentsRequestModel.getName())
+                .comment(commentsRequestModel.getComment())
                 .build();
     }
 
@@ -62,6 +63,7 @@ public class EntityModelUtils {
         commentsResponseModel.setName(comments.getName());
         commentsResponseModel.setEmail(comments.getEmail());
         commentsResponseModel.setComment(comments.getComment());
+        commentsResponseModel.setCommentStatus(comments.getCommentStatus().toString());
         return commentsResponseModel;
     }
 
@@ -74,6 +76,7 @@ public class EntityModelUtils {
                 .startDate(projectsRequestModel.getStartDate())
                 .endDate(projectsRequestModel.getEndDate())
                 .projectShowcase(projectsRequestModel.getProjectShowcase())
+                .projectRepository(projectsRequestModel.getProjectRepository())
                 .build();
     }
 
@@ -87,6 +90,7 @@ public class EntityModelUtils {
         projectsResponseModel.setStartDate(projects.getStartDate());
         projectsResponseModel.setEndDate(projects.getEndDate());
         projectsResponseModel.setProjectShowcase(projects.getProjectShowcase());
+        projectsResponseModel.setProjectRepository(projects.getProjectRepository());
         return projectsResponseModel;
     }
 

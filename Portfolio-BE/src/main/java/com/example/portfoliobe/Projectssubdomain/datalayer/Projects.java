@@ -23,6 +23,7 @@ public class Projects {
     private String startDate;
     private String endDate;
     private String projectShowcase;
+    private String projectRepository;
 
 
 }
