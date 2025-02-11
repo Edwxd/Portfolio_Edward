@@ -16,7 +16,7 @@ body {
 .biography-contact-home-container {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* Reduced gap */
+  gap: 20px; /* Adjust the gap between the two sections */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -25,19 +25,18 @@ body {
 
 /* Biography container */
 .biography-home-container {
-  flex: 1;
+  flex: 1;  /* Make the biography section take equal space */
 }
 
 /* Contact Info container */
-.contac-home-container {
-  flex: 1;
+.contact-info-home-container {
+  flex: 1;  /* Make the contact info section take equal space */
 }
 
 /* Projects container */
 .projects-home-container {
   width: 100%;
   max-width: 1200px;
-
   padding: 10px; /* Reduced padding */
 }
 
@@ -52,20 +51,19 @@ footer {
 
 /* Responsive behavior */
 @media (max-width: 900px) {
-  /* Stack Biography and Contact Info vertically on small screens */
+
   .biography-contact-home-container {
     flex-direction: column; /* Stack containers vertically */
     align-items: center;    /* Center align items */
     gap: 20px;
   }
 
-  .biography-home-container, .contac-home-container {
+  .biography-home-container, .contact-info-home-container {
     max-width: 100%;  /* Allow full width */
   }
 
   /* Stack Projects vertically */
   .projects-home-container {
     max-width: 100%;
-    
   }
 }

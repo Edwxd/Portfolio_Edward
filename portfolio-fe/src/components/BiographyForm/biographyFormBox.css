@@ -1,6 +1,7 @@
 /* Biography container */
 .biography-container {
     width: 100%;
+    max-height: 300px;
     margin: 50px auto;
     padding: 20px;
     background: rgba(147, 112, 219, 0.15);

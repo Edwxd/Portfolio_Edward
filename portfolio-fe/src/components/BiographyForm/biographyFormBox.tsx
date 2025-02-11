@@ -50,6 +50,9 @@ export default function BiographyPage() {
           <div className="divider"></div>
           <p>{biography[0].description}</p>
           <div className="divider"></div>
+
+
+
         </div>
       </div>
     </div>
