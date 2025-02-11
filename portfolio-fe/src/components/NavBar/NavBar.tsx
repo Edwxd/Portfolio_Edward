@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./NavBar.css";
 import CommentForm from "../CommentsForm/commentsForm";  // Make sure this path is correct
+import Login from "../../AuthService/login";  // Make sure this path is correct
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,6 +36,8 @@ export default function Navbar() {
 
         <div className="dropdown-menu">
           <button className="login-button">Login</button>
+          <Login/>
+          
 
           {/* Comment Button inside the Dropdown */}
           <button className="comments-button" onClick={handleCommentButtonClick}>
