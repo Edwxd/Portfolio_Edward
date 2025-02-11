@@ -4,6 +4,7 @@ import { biographyRequestModel } from "../../Models/Biography/biographyRequestMo
 import "./biographyFormBox.css";
 
 
+
 export default function BiographyPage() {
   const [biography, setBiography] = useState<biographyRequestModel[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -49,9 +50,6 @@ export default function BiographyPage() {
           <div className="divider"></div>
           <p>{biography[0].description}</p>
           <div className="divider"></div>
-
-
-
         </div>
       </div>
     </div>

@@ -74,6 +74,7 @@ public class EntityModelUtils {
                 .startDate(projectsRequestModel.getStartDate())
                 .endDate(projectsRequestModel.getEndDate())
                 .projectShowcase(projectsRequestModel.getProjectShowcase())
+                .projectRepository(projectsRequestModel.getProjectRepository())
                 .build();
     }
 
@@ -87,6 +88,7 @@ public class EntityModelUtils {
         projectsResponseModel.setStartDate(projects.getStartDate());
         projectsResponseModel.setEndDate(projects.getEndDate());
         projectsResponseModel.setProjectShowcase(projects.getProjectShowcase());
+        projectsResponseModel.setProjectRepository(projects.getProjectRepository());
         return projectsResponseModel;
     }
 

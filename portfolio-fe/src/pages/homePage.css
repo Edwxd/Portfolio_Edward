@@ -4,43 +4,41 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: column;  /* Allows content to flow vertically */
-  justify-content: flex-start; /* Aligns content at the top */
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   color: white;
-  min-height: 100vh; /* Ensures the page takes at least the full height of the viewport */
+  min-height: 100vh;
 }
 
-/* Footer styles */
-footer {
-
-  color: white;
-  padding-top: 230px;
-  width: 100%;
-  text-align: center;
-  margin-top: auto; /* Pushes the footer to the bottom of the page */
-}
-
-/* Main container for Biography and Contact Info */
-.home-container {
+/* Main container for Biography and Contact Info side by side */
+.biography-contact-home-container {
   display: flex;
-  justify-content: space-between;  /* Distribute space between items */
-  gap: 30px;  /* Space between the two containers */
-  padding: 50px;
+  justify-content: space-between;
+  gap: 20px; /* Reduced gap */
   width: 100%;
-  max-width: 1200px;  /* Optional: limit max width */
-  margin: 0 auto;  /* Center the content */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px; /* Reduced padding */
 }
 
 /* Biography container */
 .biography-home-container {
-  flex: 1;  /* Takes equal space */
+  flex: 1;
 }
 
 /* Contact Info container */
 .contac-home-container {
-  flex: 1;  /* Takes equal space */
+  flex: 1;
+}
+
+/* Projects container */
+.projects-home-container {
+  width: 100%;
+  max-width: 1200px;
+
+  padding: 10px; /* Reduced padding */
 }
 
 /* Footer styles */
@@ -54,13 +52,20 @@ footer {
 
 /* Responsive behavior */
 @media (max-width: 900px) {
-  .home-container {
+  /* Stack Biography and Contact Info vertically on small screens */
+  .biography-contact-home-container {
     flex-direction: column; /* Stack containers vertically */
     align-items: center;    /* Center align items */
-    gap: 20px;  /* Reduce gap for smaller screens */
+    gap: 20px;
   }
 
   .biography-home-container, .contac-home-container {
     max-width: 100%;  /* Allow full width */
+  }
+
+  /* Stack Projects vertically */
+  .projects-home-container {
+    max-width: 100%;
+    
   }
 }

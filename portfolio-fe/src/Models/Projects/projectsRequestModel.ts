@@ -6,4 +6,5 @@ export interface projectRequestModel{
     startDate: string;
     endDate: string;
     projectShowcase: string;
+    projectRepository: string;
 }
