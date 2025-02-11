@@ -16,5 +16,6 @@ public class CommentsResponseModel {
     private String name;
     private String email;
     private String comment;
+    private String commentStatus;
 
 }

@@ -1,6 +1,6 @@
 /* Body styles */
 body {
-  background: linear-gradient(to bottom, rgba(147, 112, 219, 1), rgba(147, 112, 219, 0.3));
+  background: linear-gradient(to bottom, rgb(212, 196, 244), rgba(237, 198, 252, 0.3));
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;

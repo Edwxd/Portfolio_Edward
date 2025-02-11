@@ -52,6 +52,7 @@ public class EntityModelUtils {
                 .name(commentsRequestModel.getComment())
                 .email(commentsRequestModel.getEmail())
                 .name(commentsRequestModel.getName())
+                .comment(commentsRequestModel.getComment())
                 .build();
     }
 
@@ -62,6 +63,7 @@ public class EntityModelUtils {
         commentsResponseModel.setName(comments.getName());
         commentsResponseModel.setEmail(comments.getEmail());
         commentsResponseModel.setComment(comments.getComment());
+        commentsResponseModel.setCommentStatus(comments.getCommentStatus().toString());
         return commentsResponseModel;
     }
 

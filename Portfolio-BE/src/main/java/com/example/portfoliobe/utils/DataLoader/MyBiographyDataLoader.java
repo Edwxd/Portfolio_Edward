@@ -4,6 +4,7 @@ import com.example.portfoliobe.Biographysubdomain.datalayer.Biography;
 import com.example.portfoliobe.Biographysubdomain.datalayer.BiographyRepository;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyRequestModel;
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
+import com.example.portfoliobe.Commentssubdomain.datalayer.CommentStatus;
 import com.example.portfoliobe.Commentssubdomain.datalayer.Comments;
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentsRepository;
 import com.example.portfoliobe.Projectssubdomain.datalayer.ProjectIdentifier;
@@ -59,6 +60,7 @@ public class MyBiographyDataLoader implements CommandLineRunner {
                 .name("Erik St-Louis")
                 .email("erik99@gmail.com")
                 .comment("Love your work. Keep it up!")
+                .commentStatus(CommentStatus.COMMENT_REVIEW)
                 .build();
 
         Comments comments2 = Comments.builder()
@@ -66,6 +68,31 @@ public class MyBiographyDataLoader implements CommandLineRunner {
                 .name("David Hall")
                 .email("DavidH@gmail.com")
                 .comment("Would love to work with you in the future. Good work!")
+                .commentStatus(CommentStatus.COMMENT_REVIEW)
+                .build();
+
+        Comments comments3 = Comments.builder()
+                .commentIdentifier(new CommentIdentifier())
+                .name("Jackie Smith")
+                .email("JS29@gmail.com")
+                .comment("Good work!")
+                .commentStatus(CommentStatus.COMMENT_REVIEW)
+                .build();
+
+        Comments comments4 = Comments.builder()
+                .commentIdentifier(new CommentIdentifier())
+                .name("Bob Williams")
+                .email("BWilliams@gmail.com")
+                .comment("Love the work!")
+                .commentStatus(CommentStatus.COMMENT_REVIEW)
+                .build();
+
+        Comments comments5 = Comments.builder()
+                .commentIdentifier(new CommentIdentifier())
+                .name("David Hall")
+                .email("DavidH@gmail.com")
+                .comment("Keep going with the good work!")
+                .commentStatus(CommentStatus.COMMENT_REVIEW)
                 .build();
 
 
@@ -128,7 +155,7 @@ public class MyBiographyDataLoader implements CommandLineRunner {
                 .log()
                 .subscribe();
 
-        Flux.just(comments1, comments2)
+        Flux.just(comments1, comments2, comments3, comments4, comments5)
                 .flatMap(commentsRepository::insert)
                 .log()
                 .subscribe();

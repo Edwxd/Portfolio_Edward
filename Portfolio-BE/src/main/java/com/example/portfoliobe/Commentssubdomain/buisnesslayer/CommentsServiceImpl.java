@@ -1,5 +1,6 @@
 package com.example.portfoliobe.Commentssubdomain.buisnesslayer;
 
+import com.example.portfoliobe.Commentssubdomain.datalayer.CommentStatus;
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentsRepository;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsRequestModel;
 import com.example.portfoliobe.Commentssubdomain.presentation.CommentsResponseModel;
@@ -33,10 +34,27 @@ public class CommentsServiceImpl implements CommentsService{
         return commentsRequestModelMono
                 .filter(comments -> comments.getComment() != null && !comments.getComment().isEmpty())
                 .map(EntityModelUtils::toCommentsEntity)
+                .map(comment -> {
+                    comment.setCommentStatus(CommentStatus.COMMENT_REVIEW);
+                    return comment;
+                })
                 .flatMap(commentsRepository::save)
                 .map(EntityModelUtils::toCommentsResponseModel);
 
     }
+
+    @Override
+    public Mono<Void> acceptComment(String commentId) {
+        return commentsRepository.getCommentsByCommentIdentifier_CommentId(commentId)
+                .map(comments -> {
+                    comments.setCommentStatus(CommentStatus.COMMENT_APPROVED);
+                    return comments;
+                })
+                .flatMap(commentsRepository::save)
+                .then();
+    }
+
+
 
 
 }

@@ -27,6 +27,8 @@ public class Comments {
     private String email;
     private String comment;
 
+    private CommentStatus commentStatus;
+
 
 
 

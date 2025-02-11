@@ -49,4 +49,11 @@ public class CommentsController {
     }
 
 
+    @PutMapping(value = "/{commentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<CommentsResponseModel>> acceptComment(@PathVariable String commentId) {
+        return commentsService.acceptComment(commentId)
+                .then(Mono.just(ResponseEntity.ok().build()));
+    }
+
+
 }
