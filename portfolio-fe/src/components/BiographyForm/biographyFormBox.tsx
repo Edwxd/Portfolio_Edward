@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { fetchBiography } from "../../api/getBiography";
-import { biographyRequestModel } from "../../Models/biographyRequestModel";
+import { fetchBiography } from "../../api/Biography/getBiography";
+import { biographyRequestModel } from "../../Models/Biography/biographyRequestModel";
 import "./biographyFormBox.css";
 
 
