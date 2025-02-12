@@ -21,17 +21,25 @@
     margin-bottom: 20px;
   }
   
-  /* Input and Textarea */
-  .comment-form-input,
-  .comment-form-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
+/* Input and Textarea */
+.comment-form-input,
+.comment-form-textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 15px; /* Add space between the input/textarea elements */
+}
+
+/* You can also add specific margin values for the form elements as needed */
+.comment-form-input:last-child,
+.comment-form-textarea:last-child {
+  margin-bottom: 20px; /* Optional, adds more space after the last input/textarea */
+}
+
   
   .comment-form-input:focus,
   .comment-form-textarea:focus {
@@ -43,7 +51,7 @@
   .comment-form-button {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
+    background-color: #939393;
     color: white;
     border: none;
     border-radius: 5px;
@@ -53,7 +61,7 @@
   }
   
   .comment-form-button:hover {
-    background-color: #0056b3;
+    background-color: #7c7c7d;
   }
   
   /* Error Message */
@@ -74,3 +82,35 @@
     }
   }
   
+/* Close Button Below Submit Button */
+.close-button {
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(234, 130, 130);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Space between submit and close buttons */
+}
+
+.close-button:hover {
+  background-color: #ff1e1e;
+}
+
+/* Overlay with blurred background and transparent white */
+.comment-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+  backdrop-filter: blur(8px); /* Blur effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}

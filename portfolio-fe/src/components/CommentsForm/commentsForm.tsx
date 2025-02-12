@@ -3,7 +3,11 @@ import { addComment } from "../../api/Comments/createComment";
 import { commentsRequestModel } from "../../Models/Comments/commentsRequestModel";  
 import "./commentsForm.css";  
 
-export default function CommentForm() {
+interface CommentFormProps {
+  onClose: () => void;  // Accept a function to close the form
+}
+
+export default function CommentForm({ onClose }: CommentFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
@@ -27,6 +31,7 @@ export default function CommentForm() {
       setComment("");
       setError(null);
       alert("Comment submitted successfully!");
+      onClose(); // Close form after successful submission
     } catch (err) {
       setError("Failed to submit comment");
     }
@@ -34,7 +39,7 @@ export default function CommentForm() {
 
   return (
     <div className="comment-form-container">
-      <h2 className="comment-form-heading">Add a Comment</h2>
+      <h2 className="comment-form-heading">Please leave any you comment you may have on my work !</h2>
       <form onSubmit={handleSubmit} className="comment-form">
         <input
           type="text"
@@ -57,6 +62,11 @@ export default function CommentForm() {
           onChange={(e) => setComment(e.target.value)}
         />
         <button type="submit" className="comment-form-button">Submit</button>
+
+        {/* Close Button Below the Submit Button */}
+        <button type="button" className="close-button" onClick={onClose}>
+          Close
+        </button>
       </form>
 
       {error && <p className="comment-form-error">{error}</p>}

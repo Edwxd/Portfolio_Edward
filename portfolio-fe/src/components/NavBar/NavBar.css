@@ -90,7 +90,6 @@
   
 
   /* NavBar.css */
-
 /* Overlay for the comment form */
 .comment-form-overlay {
   position: fixed;
@@ -98,12 +97,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Make sure it's on top */
+  z-index: 999; /* Ensure it's above everything */
 }
+
 
 /* NavBar.css */
 /* Overlay for the comment form */
