@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { AuthService } from "./authService";
 import axios from "axios";
 import Cookies from "js-cookie";
+import "./login.css";
+
 
 const Login: React.FC = () => {
   const [authService] = useState(new AuthService());
@@ -83,12 +85,12 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div >
       {!isAuthenticated ? (
-        <button onClick={handleLogin}>Log In</button>
+        <button className="login-button" onClick={handleLogin}>Log In</button>
       ) : (
-        <div>
-          <button onClick={handleLogout}>Log Out</button>
+        <div className="user-info">
+          <button className="login-button" onClick={handleLogout}>Log Out</button>
         </div>
       )}
     </div>

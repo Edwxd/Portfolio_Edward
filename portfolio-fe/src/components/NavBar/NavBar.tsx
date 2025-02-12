@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./NavBar.css";
-import CommentForm from "../CommentsForm/commentsForm";  // Make sure this path is correct
-import Login from "../../AuthService/login";  // Make sure this path is correct
+import CommentForm from "../CommentsForm/commentsForm";  
+import Login from "../../AuthService/login";  
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);  // Control the visibility of CommentForm
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const [showForm, setShowForm] = useState(false);  // Add state to control the visibility of CommentForm
 
   // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setDropdownOpen(false); // Close the dropdown
+        setDropdownOpen(false);
       }
     };
 
@@ -20,9 +20,11 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Function to toggle the visibility of the comment form
-  const handleCommentButtonClick = () => {
-    setShowForm(!showForm);
+  // Function to close the overlay when clicking outside
+  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      setShowForm(false);
+    }
   };
 
   return (
@@ -35,26 +37,17 @@ export default function Navbar() {
         </button>
 
         <div className="dropdown-menu">
-          <button className="login-button">Login</button>
-          <Login/>
-          
-
-          {/* Comment Button inside the Dropdown */}
-          <button className="comments-button" onClick={handleCommentButtonClick}>
+          <Login />
+          <button className="comments-button" onClick={() => setShowForm(true)}>
             Leave a Comment
           </button>
         </div>
       </div>
 
-      {/* Comment Form Modal */}
+      {/* Comment Form Overlay */}
       {showForm && (
-        <div className="comment-form-overlay">
-          <div className="comment-form-container">
-            <CommentForm />
-            <button className="close-button" onClick={handleCommentButtonClick}>
-              Close
-            </button>
-          </div>
+        <div className="comment-form-overlay" onClick={handleOverlayClick}>
+          <CommentForm onClose={() => setShowForm(false)} /> 
         </div>
       )}
     </nav>
