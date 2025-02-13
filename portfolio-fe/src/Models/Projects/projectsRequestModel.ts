@@ -1,4 +1,5 @@
 export interface projectRequestModel{
+    id: string;
 
     name: string;
     description: string;

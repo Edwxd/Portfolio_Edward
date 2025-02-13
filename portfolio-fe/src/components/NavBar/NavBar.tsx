@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./NavBar.css";
 import CommentForm from "../CommentsForm/commentsForm";  
-import Login from "../../AuthService/login";  
+import Login from "../../AuthService/login"; 
+import {useNavigate } from "react-router-dom";
+
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [showForm, setShowForm] = useState(false);  // Control the visibility of CommentForm
+  const [showForm, setShowForm] = useState(false);  
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("accessToken"));
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -20,12 +24,14 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Function to close the overlay when clicking outside
+  // Close comment form when clicking outside
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       setShowForm(false);
     }
   };
+
+
 
   return (
     <nav className="navbar">
@@ -36,11 +42,37 @@ export default function Navbar() {
           Menu ▼
         </button>
 
+
         <div className="dropdown-menu">
-          <Login />
+        <button className="home-button" onClick={() => navigate("/")}>
+            Home
+        </button>
+          
+
+          {/* Admin Controls - Only visible when authenticated */}
+          {isAuthenticated && (
+            <>
+              <button className="admin-button" onClick={() => navigate("/manage-projects")}>
+                Manage Projects
+              </button>
+              <button className="admin-button" >
+                Manage Biography
+              </button>
+              <button className="admin-button" >
+                Manage Contact Information
+              </button>
+              <button className="admin-button">
+                Review Comments
+              </button>
+            </>
+          )}
+
           <button className="comments-button" onClick={() => setShowForm(true)}>
             Leave a Comment
           </button>
+          <Login />
+
+
         </div>
       </div>
 
