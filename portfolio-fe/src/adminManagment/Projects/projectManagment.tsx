@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./projectManagment.css";
-import { fetchProjects } from "../api/Projects/getProjects";
-import { projectRequestModel } from "../Models/Projects/projectsRequestModel";
+import { fetchProjects } from "../../api/Projects/getProjects";
+import { projectRequestModel } from "../../Models/Projects/projectsRequestModel";
 import EditProject from "./UpdateProject/updateProject";
 import AddProject from "./AddProject/addProject";
+import { deleteProject } from "../../api/Projects/deleteProject";
 
 export default function ProjectPage() {
   const [projects, setProjects] = useState<projectRequestModel[] | null>(null);
@@ -35,6 +36,24 @@ export default function ProjectPage() {
     console.log("Editing project:", project);
     setEditingProject(project);
   };
+
+  const handleDelete = async (projectId: string) => {
+    console.log("Attempting to delete project with ID:", projectId);
+
+    if (!projectId) {
+        console.error("Error: Project ID is undefined.");
+        alert("Error: Project ID is undefined.");
+        return;
+    }
+
+    try {
+        await deleteProject(projectId);
+        alert("Project deleted successfully!");
+        setProjects((prevProjects) => prevProjects?.filter((p) => p.projectId !== projectId) || []);
+    } catch (error) {
+        alert("Failed to delete project!");
+    }
+};
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -71,7 +90,7 @@ export default function ProjectPage() {
               <button onClick={() => handleEditClick(project)}>Edit</button>
             </div>
             <div className="project-delete">
-              <button>Delete</button>
+              <button onClick={() => handleDelete(project.projectId)}>Delete</button>
             </div>
           </div>
         </div>

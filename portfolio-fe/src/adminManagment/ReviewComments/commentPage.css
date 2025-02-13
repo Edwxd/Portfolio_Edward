@@ -1,0 +1,115 @@
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    padding-top: 20px;
+}
+
+/* Comments list container */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Individual comment box styling */
+.comment-box {
+    background-color: white;
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Comment details section */
+.comment-details {
+    margin-bottom: 20px;
+}
+
+.comment-details p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.comment-details strong {
+    color: #333;
+}
+
+/* Buttons container */
+.state-approval {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Styling for individual button containers */
+.comment-status-approved,
+.comment-status-rejected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+/* Button base styles */
+button {
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    width: 120px;
+    text-align: center;
+}
+
+/* Approved button styles */
+.comment-status-approved button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.comment-status-approved button:hover {
+    background-color: #45a049;
+}
+
+/* Rejected button styles */
+.comment-status-rejected button {
+    background-color: #f44336;
+    color: white;
+}
+
+.comment-status-rejected button:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .comment-box {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+        width: 100px;
+    }
+}

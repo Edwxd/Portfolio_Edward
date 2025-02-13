@@ -22,7 +22,10 @@ export default function CommentForm({ onClose }: CommentFormProps) {
       return;
     }
 
-    const newComment: commentsRequestModel = { name, email, comment };
+    const newComment: commentsRequestModel = {
+      name, email, comment, commentStatus: "COMMENT_REVIEW",
+      commentIdentifier: ""
+    };
 
     try {
       await addComment(newComment);

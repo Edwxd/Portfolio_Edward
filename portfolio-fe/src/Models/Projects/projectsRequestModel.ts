@@ -1,6 +1,6 @@
 export interface projectRequestModel{
-    id: string;
 
+    projectId: string;
     name: string;
     description: string;
     technologies: string;

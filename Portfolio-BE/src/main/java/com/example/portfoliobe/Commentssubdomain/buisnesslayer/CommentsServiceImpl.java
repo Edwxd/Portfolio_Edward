@@ -54,6 +54,17 @@ public class CommentsServiceImpl implements CommentsService{
                 .then();
     }
 
+    @Override
+    public Mono<Void> rejectComment(String commentId) {
+        return commentsRepository.getCommentsByCommentIdentifier_CommentId(commentId)
+                .map(comments -> {
+                    comments.setCommentStatus(CommentStatus.COMMENT_REJECTED);
+                    return comments;
+                })
+                .flatMap(commentsRepository::save)
+                .then();
+    }
+
 
 
 

@@ -1,15 +1,24 @@
 import { ChangeEvent, FormEvent, JSX, useState } from "react";
-import { projectRequestModel } from "../../Models/Projects/projectsRequestModel";
-import { editProject } from "../../api/Projects/updateProjects";
-import "./updateProject.css";
+import { projectRequestModel } from "../../../Models/Projects/projectsRequestModel";
+import { addProject } from "../../../api/Projects/createProject";
+import "./addProject.css";
 
-interface EditProjectProps {
-  project: projectRequestModel;
-  setIsEditing: React.Dispatch<React.SetStateAction<projectRequestModel | null>>;
+interface AddProjectProps {
+  setIsAdding: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function EditProject({ project, setIsEditing }: EditProjectProps): JSX.Element {
-  const [formData, setFormData] = useState<projectRequestModel>(project);
+export default function AddProject({ setIsAdding }: AddProjectProps): JSX.Element {
+  const [formData, setFormData] = useState<projectRequestModel>({
+    projectId: "",
+    name: "",
+    description: "",
+    technologies: "",
+    startDate: "",
+    endDate: "",
+    projectRepository: "",
+    projectShowcase: ""
+  });
+
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -19,7 +28,7 @@ export default function EditProject({ project, setIsEditing }: EditProjectProps)
   };
 
   const handleCancel = () => {
-    setIsEditing(null);
+    setIsAdding(false);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -27,13 +36,13 @@ export default function EditProject({ project, setIsEditing }: EditProjectProps)
     if (!validate()) return;
     setLoading(true);
     try {
-      await editProject(project.id, formData);
-      alert("Project updated successfully");
-      setIsEditing(null); // Close form after successful update
+      await addProject(formData);
+      alert("Project added successfully");
+      setIsAdding(false);
       window.location.reload();
     } catch (err) {
-      console.error("Error updating project:", err);
-      setError("Failed to update project. Please try again.");
+      console.error("Error adding project:", err);
+      setError("Failed to add project. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -57,9 +66,10 @@ export default function EditProject({ project, setIsEditing }: EditProjectProps)
   };
 
   return (
+    <div className="edit-form-overlay">
       <div className="edit-form-container">
         <form onSubmit={handleSubmit} className="edit-form">
-          <h2 className="edit-form-heading">Edit Project</h2>
+          <h2 className="edit-form-heading">Add New Project</h2>
 
           {/* Project Name */}
           <div className="input-container">
@@ -97,11 +107,10 @@ export default function EditProject({ project, setIsEditing }: EditProjectProps)
               onChange={handleChanges}
               className="edit-form-input"
               id="technologies"
-              style={{ height: "100px" }}
             />
           </div>
 
-          {/* Start and End Date (side-by-side) */}
+          {/* Start and End Date */}
           <div className="date-container">
             <div className="input-container">
               <label htmlFor="startDate">Start Date:</label>
@@ -148,7 +157,7 @@ export default function EditProject({ project, setIsEditing }: EditProjectProps)
               type="submit"
               disabled={loading}
             >
-              {loading ? "Updating..." : "Update Project"}
+              {loading ? "Adding..." : "Add Project"}
             </button>
             <button
               className="cancel-update-button"
@@ -163,5 +172,6 @@ export default function EditProject({ project, setIsEditing }: EditProjectProps)
           {error && <p className="error-message">{error}</p>}
         </form>
       </div>
+    </div>
   );
 }

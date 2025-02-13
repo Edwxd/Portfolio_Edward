@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar/NavBar";
 import "./homePage.css";
-import ProjectManagment from "../adminManagment/projectManagment";
+import ProjectManagment from "../adminManagment/Projects/projectManagment";
 
 export default function HomePage() {
   return (

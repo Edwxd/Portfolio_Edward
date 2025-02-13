@@ -61,7 +61,7 @@ export default function Navbar() {
               <button className="admin-button" >
                 Manage Contact Information
               </button>
-              <button className="admin-button">
+              <button className="admin-button" onClick={() => navigate("/comments")}>
                 Review Comments
               </button>
             </>

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import ProjectManagmentPage from "./pages/projectsManagmentPage";
+// import CommentReviewPage from "./pages/commentReviewPage";
 
 const App: React.FC = () => {
   return (
@@ -9,6 +10,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/manage-projects" element={<ProjectManagmentPage />} />
+        {/* <Route path="/manage-biography" element={<BiographyManagmentPage />} />
+        <Route path="/manage-contact" element={<ContactManagmentPage />} /> */}
+        {/* <Route path="/comments" element={<CommentReviewPage />} /> */}
       </Routes>
     </Router>
   );

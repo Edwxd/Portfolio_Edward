@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class ProjectsRequestModel {
 
 
+    private String projectId;
     private String name;
     private String description;
     private String technologies;
