@@ -55,4 +55,10 @@ public class ProjectsController {
                                 .status(HttpStatus.BAD_REQUEST)
                                 .body(null)));
     }
+
+    @DeleteMapping(value = "/{projectId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<Void>> deleteProject(@PathVariable String projectId) {
+        return projectsService.deleteProject(projectId)
+                .then(Mono.just(ResponseEntity.ok().build()));
+    }
 }

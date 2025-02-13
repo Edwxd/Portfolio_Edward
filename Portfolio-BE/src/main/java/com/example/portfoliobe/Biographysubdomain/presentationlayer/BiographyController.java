@@ -23,4 +23,9 @@ public class BiographyController {
 
     }
 
+    @PutMapping(value = "/{bioId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<BiographyResponseModel> updateBiography(@PathVariable String bioId, @RequestBody BiographyRequestModel biographyRequestModel) {
+        return biographyService.updateBiography(bioId, biographyRequestModel);
+    }
+
 }

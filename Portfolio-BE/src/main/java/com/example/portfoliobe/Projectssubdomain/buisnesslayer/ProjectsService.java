@@ -15,4 +15,6 @@ public interface ProjectsService {
     Mono<ProjectsResponseModel> createProject(Mono<ProjectsRequestModel> project);
 
     Mono<ProjectsResponseModel> updateProject(String projectId, Mono<ProjectsRequestModel> project);
+
+    Mono<Void> deleteProject(String projectId);
 }

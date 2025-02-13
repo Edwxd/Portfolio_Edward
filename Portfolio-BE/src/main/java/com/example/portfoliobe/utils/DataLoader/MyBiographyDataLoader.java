@@ -1,6 +1,7 @@
 package com.example.portfoliobe.utils.DataLoader;
 
 import com.example.portfoliobe.Biographysubdomain.datalayer.Biography;
+import com.example.portfoliobe.Biographysubdomain.datalayer.BiographyIdentifier;
 import com.example.portfoliobe.Biographysubdomain.datalayer.BiographyRepository;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyRequestModel;
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
@@ -34,6 +35,7 @@ public class MyBiographyDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Biography biography = Biography.builder()
+                .biographyIdentifier(new BiographyIdentifier())
                 .name("Edward Nasser")
                 .email("nasser.edward1@gmail.com")
                 .phoneNumber("438-350-0368")

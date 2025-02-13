@@ -1,6 +1,7 @@
 package com.example.portfoliobe.utils;
 
 import com.example.portfoliobe.Biographysubdomain.datalayer.Biography;
+import com.example.portfoliobe.Biographysubdomain.datalayer.BiographyIdentifier;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyRequestModel;
 import com.example.portfoliobe.Biographysubdomain.presentationlayer.BiographyResponseModel;
 import com.example.portfoliobe.Commentssubdomain.datalayer.CommentIdentifier;
@@ -18,6 +19,7 @@ public class EntityModelUtils {
     public static BiographyResponseModel toBiographyResponseModel(Biography biography) {
         BiographyResponseModel biographyResponseModel = new BiographyResponseModel();
         BeanUtils.copyProperties(biography, biographyResponseModel);
+        biographyResponseModel.setBioIdentifier(biography.getBiographyIdentifier().getBiographyId());
         biographyResponseModel.setName(biography.getName());
         biographyResponseModel.setDescription(biography.getDescription());
         biographyResponseModel.setEmail(biography.getEmail());
@@ -32,6 +34,7 @@ public class EntityModelUtils {
     public static Biography toBiographyEntity(BiographyRequestModel biographyRequestModel){
 
     return Biography.builder()
+            .biographyIdentifier(new BiographyIdentifier())
             .name(biographyRequestModel.getName())
             .description(biographyRequestModel.getDescription())
             .email(biographyRequestModel.getEmail())
