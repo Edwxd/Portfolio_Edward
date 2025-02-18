@@ -5,23 +5,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      - mongo
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/portfolio # Ensure this is set properly
+      SPRING_DATASOURCE_URL: ${DB_URL}
+    depends_on:
+      - mongo-express
   frontend:
     build:
       context: ./Portfolio-FE
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-
-  mongo:
-    restart: always
-    image: mongo:6.0
-    container_name: mongodb-container
-    ports:
-      - "27017:27017"
 
   mongo-express:
     image: mongo-express
@@ -31,6 +24,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_SERVER: mongo-atlas
       ME_CONFIG_BASICAUTH_USERNAME: root
       ME_CONFIG_BASICAUTH_PASSWORD: root
+
