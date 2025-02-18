@@ -37,8 +37,6 @@ import static org.springframework.security.oauth2.core.authorization.OAuth2React
 @Profile("!test")
 public class SecurityConfig {
 
-  @Value("${frontend.url}")
-    private String frontendDomain;
 
 
 
@@ -94,7 +92,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(frontendDomain));
+        configuration.setAllowedOrigins(List.of("https://portfolioedwardfe-production.up.railway.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
