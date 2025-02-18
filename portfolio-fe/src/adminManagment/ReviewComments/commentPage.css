@@ -9,7 +9,7 @@ body {
 /* Header styling */
 h1 {
     text-align: center;
-    font-size: 2em;
+    font-size: 2.5em; /* Increase header size */
     color: #333;
     padding-top: 20px;
 }
@@ -20,15 +20,17 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    max-width: 1200px; /* Max width for the list */
+    margin: 0 auto; /* Center the list */
 }
 
 /* Individual comment box styling */
 .comment-box {
     background-color: white;
-    width: 80%;
-    max-width: 800px;
+    width: 90%; /* Increase width */
+    max-width: 1000px; /* Set a max width for larger screens */
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 25px; /* Adjust padding */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -61,7 +63,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 10px;
+    margin: 0 15px; /* Increase the margin between buttons */
 }
 
 /* Button base styles */
@@ -72,7 +74,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-    width: 120px;
+    width: 140px; /* Increase button width */
     text-align: center;
 }
 
@@ -99,17 +101,17 @@ button {
 /* Responsive design */
 @media (max-width: 768px) {
     .comment-box {
-        width: 90%;
-        padding: 15px;
+        width: 95%; /* Slightly smaller for mobile */
+        padding: 20px;
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: 2em; /* Slightly smaller for mobile */
     }
 
     button {
         font-size: 14px;
         padding: 8px 12px;
-        width: 100px;
+        width: 120px; /* Adjust button width */
     }
 }

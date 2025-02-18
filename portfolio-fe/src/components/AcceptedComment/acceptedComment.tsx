@@ -48,7 +48,7 @@ export const AcceptedComment = () => {
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-    if (!comments || comments.length === 0) return <p>No comments to review.</p>;
+    if (!comments || comments.length === 0) return <p style={{color: "black"}}>No comment.</p>;
 
     return (
         <div className="comment-review-container">

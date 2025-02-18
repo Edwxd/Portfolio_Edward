@@ -62,7 +62,7 @@ export const CommentReviewPage = () => {
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-    if (!comments || comments.length === 0) return <p>No comments to review.</p>;
+    if (!comments || comments.length === 0) return <p style={{color:"black"}}>No comments to review</p>;
 
     return (
         <div>
