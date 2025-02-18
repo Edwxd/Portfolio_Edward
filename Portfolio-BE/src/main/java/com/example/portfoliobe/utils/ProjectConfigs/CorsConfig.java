@@ -12,19 +12,19 @@ import java.util.List;
 @Configuration
 public class CorsConfig {
 
-
-
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("https://portfolioedwardfe-production.up.railway.app")); // Allow frontend URL
+        config.setAllowedOrigins(List.of("https://portfolioedwardfe-production.up.railway.app"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*")); // Allow all headers
-        config.setAllowCredentials(true); // Allow cookies or auth headers
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true); // ✅ REQUIRED for authenticated requests
+        config.addExposedHeader("Authorization"); // ✅ Allow frontend to read the Authorization header
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
     }
+
 }
