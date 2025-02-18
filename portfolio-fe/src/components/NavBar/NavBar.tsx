@@ -58,7 +58,7 @@ export default function Navbar() {
               <button className="admin-button" onClick={() => navigate("/manage-biography")} >
                 Manage Biography
               </button>
-              <button className="admin-button" >
+              <button className="admin-button" onClick={() => navigate("/manage-contact-info")}>
                 Manage Contact Information
               </button>
               <button className="admin-button" onClick={() => navigate("/comments")}>

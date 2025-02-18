@@ -28,6 +28,10 @@ export default function BiographyPage() {
     loadBiography();
   }, []);
 
+  useEffect(() => {
+    console.log("Updated Biography:", biography);
+  }, [biography]);
+
   const handleEditClick = () => {
     setIsEditing(true); // Switch to edit mode
   };
@@ -37,33 +41,32 @@ export default function BiographyPage() {
   if (!biography) return <p>No biography data available.</p>;
 
   return (
-    <div className="biography-managment-container">
-      {isEditing ? (
-        <EditBiography
-          biography={biography}
-          setIsEditing={setIsEditing}
-          setBiography={setBiography} // Pass the setBiography function to update state
-        />
-      ) : (
-        <>
-          <h1>{biography.name}</h1>
-          <img src={biography.imageUrl} alt="Biography" className="profile-managment-picture-container" />
-          
-          <div className="biography-managment-text-container">
-            <div className="biography-managment-text">
-              <div className="divider"></div>
-              <p>{biography.description}</p>
-              <div className="divider"></div>
+<div className="biography-managment-container" key={biography?.bioIdentifier}>
+  {isEditing ? (
+    <EditBiography
+      biography={biography}
+      setIsEditing={setIsEditing}
+      setBiography={setBiography}
+    />
+  ) : (
+    <>
+      <h1>{biography.name}</h1>
+      <img src={biography.imageUrl} alt="Biography" className="profile-managment-picture-container" />
+      <div className="biography-managment-text-container">
+        <div className="biography-managment-text">
+          <div className="divider"></div>
+          <p>{biography.description}</p>
+          <div className="divider"></div>
 
-              <div className="edit-managment-button-container">
-                <button className="edit-managment-button" onClick={handleEditClick}>
-                  Edit
-                </button>
-              </div>
-            </div>
+          <div className="edit-managment-button-container">
+            <button className="edit-managment-button" onClick={handleEditClick}>
+              Edit
+            </button>
           </div>
-        </>
-      )}
-    </div>
+        </div>
+      </div>
+    </>
+  )}
+</div>
   );
 }
