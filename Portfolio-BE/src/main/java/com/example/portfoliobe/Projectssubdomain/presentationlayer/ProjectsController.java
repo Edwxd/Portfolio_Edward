@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("api/v1/projects")
-@CrossOrigin(origins = "https://portfolioedward-production.up.railway.app")
+//@CrossOrigin(origins = "https://portfolioedward-production.up.railway.app")
 
 //@CrossOrigin(origins = "http://localhost:3000")
 public class ProjectsController {
