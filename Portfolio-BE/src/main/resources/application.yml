@@ -11,7 +11,8 @@ website:
 spring:
   data:
     mongodb:
-      uri: mongodb://mongo:27017/portfolio
+      uri: ${DB_URL}
+      #uri: mongodb://mongo:27017/portfolio
       auto-index-creation: true
 
   server:
