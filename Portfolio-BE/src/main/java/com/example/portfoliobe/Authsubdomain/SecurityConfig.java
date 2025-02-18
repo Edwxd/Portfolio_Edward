@@ -92,11 +92,15 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(true); // ✅ REQUIRED
+        configuration.addExposedHeader("Authorization"); // ✅ Allow frontend to access JWT
         configuration.setAllowedOrigins(List.of("https://portfolioedwardfe-production.up.railway.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 }
