@@ -1,34 +1,25 @@
-# Common Configuration
 frontend:
-  url: https://portfolioedward-production.up.railway.app
-  #url: http://localhost:3000
+  url: https://portfolioedwardfe-production.up.railway.app
 
 backend:
-  url: http://localhost:8080
+  url: https://portfolioedward-production.up.railway.app  # FIXED: Use deployed backend URL
 
 website:
-  domain: localhost
+  domain: portfolioedwardfe-production.up.railway.app  # Use frontend domain
 
 spring:
   data:
     mongodb:
       uri: ${DB_URL}
-      #uri: mongodb://mongo:27017/portfolio
       auto-index-creation: true
 
   server:
     port: 8080
 
-
   profiles:
     active: dev
-
-
 
 logging:
   level:
     root: INFO
     com.honouring: DEBUG
-
-
-

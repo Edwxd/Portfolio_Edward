@@ -7,6 +7,8 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: ${DB_URL}
+      FRONTEND_URL: "https://portfolioedwardfe-production.up.railway.app"
+    
     depends_on:
       - mongo-express
   frontend:
