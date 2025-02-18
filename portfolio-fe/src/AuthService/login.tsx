@@ -32,7 +32,7 @@ const Login: React.FC = () => {
       }
 
       const response = await fetch(
-        "https://dolphin-app-sxvxi.ondigitalocean.app/api/userInfo",
+        "https://localhost:8080/api/userInfo",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -64,6 +64,7 @@ const Login: React.FC = () => {
       // Assume `authService.login()` stores accessToken in localStorage
       setIsAuthenticated(true);
       await fetchUserInfo();
+      window.location.reload();
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios Error:", error.response);

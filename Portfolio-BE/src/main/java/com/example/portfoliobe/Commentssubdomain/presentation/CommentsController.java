@@ -56,4 +56,11 @@ public class CommentsController {
     }
 
 
+    @PutMapping(value = "/rejectComment/{commentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<CommentsResponseModel>> rejectComment(@PathVariable String commentId) {
+        return commentsService.rejectComment(commentId)
+                .then(Mono.just(ResponseEntity.ok().build()));
+    }
+
+
 }

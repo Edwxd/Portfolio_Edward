@@ -1,0 +1,148 @@
+.project-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .project-box {
+    background: #eaebeb;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .project-box h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .project-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+  
+  .divider {
+    height: 2px;
+    background: #ccc;
+    margin-top: 20px;
+  }
+
+  .project-description{
+    width: 80%; /* Reduce width to focus text */
+    max-width: 500px; /* Prevent too-wide text */
+    margin: 0 auto; /* Center the content */
+    text-align: center; /* Align text neatly */
+    text-justify: inter-word; /* Improve word spacing */
+    padding: 15px;
+    color: #333;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    line-height: 1.6; /* Improve readability */
+  }
+  
+  /* Divider */
+.divider {
+  width: 50%;
+  height: 2px;
+  background: #9370DB;
+  margin: 15px auto;
+  opacity: 0.7;
+}
+
+.project-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+.project-edit button {
+  background-color: #c5aafc;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 100%;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.project-edit button:hover {
+  background-color: #9775f5;
+  transform: scale(1.05);
+}
+
+
+.project-delete button {
+  background-color: #c5aafc;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 100%;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.project-delete button:hover {
+  background-color: #9775f5;
+  transform: scale(1.05);
+}
+
+.add-project{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;;
+}
+
+.add-project button {
+  background-color: #c5aafc;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 20%;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.add-project button:hover {
+  background-color: #9775f5;
+  transform: scale(1.05);
+}
+
+
+.edit-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 2px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.edit-container {
+  border: 2px solid red; /* Debugging - remove after verifying */
+}

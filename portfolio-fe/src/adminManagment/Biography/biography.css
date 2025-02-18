@@ -1,0 +1,83 @@
+/* Biography container */
+.biography-managment-container {
+    width: 100%;
+    max-width: 900px; /* Adjust width */
+    margin: 50px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    min-height: 120vh; /* Ensure container height grows with content */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Keeps content at the top */
+}
+
+/* Title Styling */
+.biography-managment-container h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Profile Picture */
+.profile-managment-picture-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 15px auto;
+    border: 3px solid #9370DB;
+
+}
+
+
+/* Biography Content */
+.biography-managment-text-container {
+    max-height: none; /* Ensure content is fully visible */
+    opacity: 1;
+    overflow: visible; /* Ensures overflow content is displayed */
+}
+
+.biography-managment-text {
+    opacity: 1;
+    line-height: 1.6;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Divider Line */
+.divider {
+    width: 50%;
+    height: 2px;
+    background: #9370DB;
+    margin: 15px auto;
+    opacity: 0.7;
+}
+
+/* Edit Button */
+.edit-managment-button-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.edit-managment-button {
+    background: #9370DB;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.edit-managment-button:hover {
+    background: #7b5ec9;
+}

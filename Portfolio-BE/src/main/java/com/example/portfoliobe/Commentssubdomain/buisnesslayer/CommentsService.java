@@ -16,4 +16,6 @@ public interface CommentsService {
 
     Mono<Void> acceptComment(String commentId);
 
+    Mono<Void> rejectComment(String commentId);
+
 }

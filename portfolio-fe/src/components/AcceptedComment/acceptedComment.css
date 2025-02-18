@@ -1,0 +1,79 @@
+.comment-review-container {
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.comments-list {
+    display: flex;
+    gap: 20px;
+    width: 70%;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+}
+
+.comment-box {
+    flex: 0 0 auto;
+    width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.comment-box:hover {
+    transform: scale(1.02);
+}
+
+/* Small Square Grey Buttons */
+.arrow-button {
+    background-color: #808080; /* Grey */
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers arrow */
+}
+
+/* Hover Effect */
+.arrow-button:hover {
+    background-color: #696969; /* Darker Grey */
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Disabled State */
+.arrow-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+}
+
+.arrow-button:first-child {
+    left: 2%;
+}
+
+.arrow-button:last-child {
+    right: 2%;
+}

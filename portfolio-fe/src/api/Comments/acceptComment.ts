@@ -1,4 +1,4 @@
-import axiosInstance from "axios";
+import axiosInstance from "../../axiosInstance/axiosInstance";
 
 export const acceptComment = async (commentId: string): Promise<void> => {
   try {
@@ -13,7 +13,7 @@ export const acceptComment = async (commentId: string): Promise<void> => {
       // Redirect to unauthorized page if status is 401
       window.location.href = "/unauthorized";
     } else {
-      console.error("Error in editArticle API call:", error);
+      console.error("Error in accept comment API call:", error);
     }
     throw error;
   }

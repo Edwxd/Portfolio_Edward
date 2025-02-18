@@ -144,3 +144,39 @@
 .close-button:hover {
   background-color: darkred;
 }
+
+
+.admin-button {
+  background-color: #9370db;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 100%;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.admin-button:hover {
+  background-color: #7b5ec9;
+  transform: scale(1.05);
+}
+
+.home-button {
+  background-color: #9370db;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 100%;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.home-button:hover {
+  background-color: #7b5ec9;
+  transform: scale(1.05);
+}
+

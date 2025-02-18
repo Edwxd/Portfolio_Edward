@@ -44,4 +44,12 @@ public class ProjectServiceImpl implements ProjectsService{
                         .flatMap(projectsRepository::save)
                         .map(EntityModelUtils::toProjectsResponseModel));
     }
+
+
+
+    @Override
+    public Mono<Void> deleteProject(String projectId) {
+        return projectsRepository.findProjectsByProjectIdentifier_ProjectId(projectId)
+                .flatMap(projectsRepository::delete);
+    }
 }

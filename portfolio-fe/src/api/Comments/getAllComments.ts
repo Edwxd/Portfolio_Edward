@@ -2,7 +2,7 @@ import  axiosInstance  from "../../axiosInstance/axiosInstance"
 import { commentsRequestModel } from "../../Models/Comments/commentsRequestModel";
 
 
-export const fetchProjects = async (
+export const fetchAllCommentsToReview = async (
 ): Promise<commentsRequestModel[]> => {
 
     try{

@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 public interface BiographyRepository extends ReactiveMongoRepository<Biography, String> {
 
 
-Mono<Biography> getBiographyByName(String name);
+Mono<Biography> getBiographyByBiographyIdentifier_BiographyId(String bioId);
 
 
 }

@@ -3,4 +3,5 @@ export interface commentsResponseModel{
     name: string;
     email: string;
     comment: string;
+    commentStatus: string;
 }

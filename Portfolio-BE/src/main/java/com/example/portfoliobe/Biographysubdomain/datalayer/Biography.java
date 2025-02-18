@@ -3,6 +3,7 @@ package com.example.portfoliobe.Biographysubdomain.datalayer;
 
 
 
+import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,8 @@ public class Biography {
     @Id
     private String id;
 
+    @Embedded
+    private BiographyIdentifier biographyIdentifier;
     private String name;
     private String description;
     private String imageUrl;
