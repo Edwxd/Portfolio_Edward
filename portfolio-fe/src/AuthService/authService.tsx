@@ -15,7 +15,7 @@ export class AuthService {
       clientId: "COuKmAH95MAHPN2irCzsuOearf2gdsOH",
       authorizationParams: {
         // redirect_uri: "http://localhost:3000",
-        redirect_uri: "https://portfolioedward-production.up.railway.app",
+        redirect_uri: "https://portfolioedwardfe-production.up.railway.app",
         audience: "http://localhost:8080/api/userInfo",
         scope: "openid profile email roles",
       },
