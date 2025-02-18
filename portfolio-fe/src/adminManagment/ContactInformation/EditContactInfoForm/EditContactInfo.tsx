@@ -28,7 +28,7 @@ export default function EditContactInfo({ biography, setIsEditing, setBiography 
     if (!validate()) return;
     setLoading(true);
     try {
-      await editBiography(biography.id, formData); // Send the update request
+      await editBiography(biography.bioIdentifier, formData); // Send the update request
       alert("Biography updated successfully");
 
       setIsEditing(false); // Close the edit form

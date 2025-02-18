@@ -1,5 +1,5 @@
 export interface biographyRequestModel {
-  id: string;
+  bioIdentifier: string;
   name: string;
   description: string;
   imageUrl: string;
