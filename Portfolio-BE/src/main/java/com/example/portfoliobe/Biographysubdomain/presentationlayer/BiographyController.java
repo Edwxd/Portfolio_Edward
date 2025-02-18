@@ -8,7 +8,8 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("api/v1/biography")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://portfolioedward-production.up.railway.app")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class BiographyController {
 
     private final BiographyService biographyService;
