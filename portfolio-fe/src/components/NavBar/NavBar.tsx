@@ -55,7 +55,7 @@ export default function Navbar() {
               <button className="admin-button" onClick={() => navigate("/manage-projects")}>
                 Manage Projects
               </button>
-              <button className="admin-button" >
+              <button className="admin-button" onClick={() => navigate("/manage-biography")} >
                 Manage Biography
               </button>
               <button className="admin-button" >

@@ -9,6 +9,7 @@ public interface BiographyService {
 
     Flux<BiographyResponseModel> getMyBiography();
 
+    Mono<BiographyResponseModel> getBiographyById(String biographyId);
 
     Mono<BiographyResponseModel> updateBiography(String biographyId, BiographyRequestModel biographyRequestModel);
 

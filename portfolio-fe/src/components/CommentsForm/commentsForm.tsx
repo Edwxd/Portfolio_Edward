@@ -42,7 +42,7 @@ export default function CommentForm({ onClose }: CommentFormProps) {
 
   return (
     <div className="comment-form-container">
-      <h2 className="comment-form-heading">Please leave any you comment you may have on my work !</h2>
+      <h2 className="comment-form-heading">Please leave any comment you may have on my work !</h2>
       <form onSubmit={handleSubmit} className="comment-form">
         <input
           type="text"

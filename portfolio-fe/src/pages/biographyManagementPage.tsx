@@ -1,14 +1,14 @@
 import NavBar from "../components/NavBar/NavBar";
 import "./homePage.css";
-import { CommentReviewPage } from "../adminManagment/ReviewComments/commentsPage";
+import BiographyEditPage from "../adminManagment/Biography/biographyEditPage";
 
-export default function HomePage() {
+export default function BiographyEditForm() {
   return (
     <div>
       <NavBar />
       
-      <div className="project-managment-container">
-        <CommentReviewPage/>
+      <div className="biography-managment-container">
+        <BiographyEditPage/>
       </div>
   
       

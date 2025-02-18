@@ -19,6 +19,15 @@ public class BiographyServiceImpl implements BiographyService {
         return biographyRepository.findAll()
                 .map(EntityModelUtils::toBiographyResponseModel);
     }
+
+    @Override
+    public Mono<BiographyResponseModel> getBiographyById(String biographyId) {
+        return biographyRepository.getBiographyByBiographyIdentifier_BiographyId(biographyId)
+                .map(EntityModelUtils::toBiographyResponseModel);
+    }
+
+
+
     @Override
     public Mono<BiographyResponseModel> updateBiography(String bioId, BiographyRequestModel biographyRequestModel) {
         return biographyRepository.getBiographyByBiographyIdentifier_BiographyId(bioId)

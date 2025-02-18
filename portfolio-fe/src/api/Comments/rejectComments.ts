@@ -1,4 +1,4 @@
-import axiosInstance from "axios";
+import axiosInstance from "../../axiosInstance/axiosInstance";
 
 export const rejectComment = async (commentId: string): Promise<void> => {
   try {

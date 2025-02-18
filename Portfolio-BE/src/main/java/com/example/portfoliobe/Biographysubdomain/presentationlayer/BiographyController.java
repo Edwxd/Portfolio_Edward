@@ -23,6 +23,11 @@ public class BiographyController {
 
     }
 
+    @GetMapping(value = "/{bioId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<BiographyResponseModel> getBiographyById(@PathVariable String bioId) {
+        return biographyService.getBiographyById(bioId);
+    }
+
     @PutMapping(value = "/{bioId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<BiographyResponseModel> updateBiography(@PathVariable String bioId, @RequestBody BiographyRequestModel biographyRequestModel) {
         return biographyService.updateBiography(bioId, biographyRequestModel);

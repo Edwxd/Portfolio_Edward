@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BiographyRequestModel {
 
+    private String bioIdentifier;
     private String name;
     private String description;
     private String imageUrl;
