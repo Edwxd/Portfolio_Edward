@@ -11,7 +11,7 @@ services:
       SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/portfolio # Ensure this is set properly
   frontend:
     build:
-      context: ./Portfolio-FE
+      context: ./Portfolio-fe
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
