@@ -41,21 +41,19 @@ export default function BiographyPage() {
         <h1>Contact Information</h1>
         <div className="contact-info-text">
           <p>
-            <strong>Here is my contact information</strong>
-            
+            <strong>Here is my Email if you wish to contact me</strong>
           </p>
           <div className="divider"></div>
           <p>
             <strong>Email:</strong> {biography[0].email}
-            <div className="social-links">
              {/* New Email Icon */}
              <a href={`mailto:${biography[0].email}`} className="email-icon">
               <FontAwesomeIcon icon={faEnvelope} className="social-icon" />
             </a>
-          </div>
           </p>
 
           <div className="divider"></div>
+          <strong>Learn more about my projects and experience</strong>
 
 
           <p>

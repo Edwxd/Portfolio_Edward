@@ -70,6 +70,15 @@ export default function Navbar() {
           <button className="comments-button" onClick={() => setShowForm(true)}>
             Leave a Comment
           </button>
+
+          <a href="/OfficialCv.pdf" download="OfficialCv.pdf">
+            <button className="comments-button">English CV</button>
+            </a>
+
+            <a href="/OfficialCvFrench.pdf" download="OfficialCvFrench.pdf">
+            <button className="comments-button">French CV</button>
+          </a>
+
           <Login />
 
 
