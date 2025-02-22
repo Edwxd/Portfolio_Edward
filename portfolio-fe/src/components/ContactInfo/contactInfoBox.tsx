@@ -5,7 +5,7 @@ import { biographyRequestModel } from "../../Models/Biography/biographyRequestMo
 import "./contactInfoBox.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope} from "@fortawesome/free-solid-svg-icons";
 
 export default function BiographyPage() {
   const [biography, setBiography] = useState<biographyRequestModel[] | null>(null);
@@ -41,9 +41,7 @@ export default function BiographyPage() {
         <h1>Contact Information</h1>
         <div className="contact-info-text">
           <p>
-            <strong>If you wish to contact me,</strong>
-            <br />
-            <strong>here is my eamil</strong>
+            <strong>Here is my Email if you wish to contact me</strong>
           </p>
           <div className="divider"></div>
           <p>
@@ -57,6 +55,10 @@ export default function BiographyPage() {
           <div className="divider"></div>
           <strong>Learn more about my projects and experience</strong>
 
+
+          <p>
+            <strong>Learn more about my porjects and experience:</strong>
+          </p>
           <div className="social-links">
             <a href={biography[0].githubUrl} target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faGithub} className="social-icon" />
@@ -64,10 +66,14 @@ export default function BiographyPage() {
             <a href={biography[0].linkedinUrl} target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
             </a>
-           
           </div>
+          <div className="divider"></div>
+
+
         </div>
       </div>
     </div>
   );
 }
+
+

@@ -78,6 +78,14 @@ export default function ProjectPage() {
         <strong>Technologies Used:</strong>
         <p> {projects[currentIndex].technologies}</p>
         <div className="divider"></div>
+        <p><strong>Project Showcase</strong></p>
+
+        <video key={projects[currentIndex].projectShowcase} controls width="600">
+          <source src={projects[currentIndex].projectShowcase} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div className="divider"></div>
         <p><strong>Start Date:</strong> {projects[currentIndex].startDate}</p>
         <p><strong>End Date:</strong> {projects[currentIndex].endDate}</p>
         <div className="divider"></div>
