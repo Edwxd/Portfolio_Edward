@@ -31,6 +31,16 @@
     text-align: center;
 }
 
+.project-container video{
+
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+
+
 /* Project Text Container */
 .project-text-container {
     width: 80%; /* Reduce width to focus text */
