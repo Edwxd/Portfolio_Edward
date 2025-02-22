@@ -66,6 +66,14 @@ public class CommentsServiceImpl implements CommentsService{
     }
 
 
+    @Override
+    public Mono<Void> deleteComment(String commentId) {
+        return commentsRepository.getCommentsByCommentIdentifier_CommentId(commentId)
+                .flatMap(commentsRepository::delete)
+                .then();
+    }
+
+
 
 
 }

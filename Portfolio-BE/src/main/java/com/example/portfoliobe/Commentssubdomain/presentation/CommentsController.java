@@ -65,4 +65,10 @@ public class CommentsController {
     }
 
 
+    @DeleteMapping(value = "/{commentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<Void>> deleteComment(@PathVariable String commentId) {
+        return commentsService.deleteComment(commentId)
+                .then(Mono.just(ResponseEntity.ok().build()));
+    }
+
 }

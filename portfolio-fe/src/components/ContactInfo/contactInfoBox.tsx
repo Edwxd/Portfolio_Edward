@@ -43,20 +43,19 @@ export default function BiographyPage() {
           <p>
             <strong>If you wish to contact me,</strong>
             <br />
-            <strong>here is my contact information.</strong>
+            <strong>here is my eamil</strong>
           </p>
           <div className="divider"></div>
           <p>
             <strong>Email:</strong> {biography[0].email}
-            <div className="social-links">
              {/* New Email Icon */}
              <a href={`mailto:${biography[0].email}`} className="email-icon">
               <FontAwesomeIcon icon={faEnvelope} className="social-icon" />
             </a>
-          </div>
           </p>
 
           <div className="divider"></div>
+          <strong>Learn more about my projects and experience</strong>
 
           <div className="social-links">
             <a href={biography[0].githubUrl} target="_blank" rel="noopener noreferrer">
