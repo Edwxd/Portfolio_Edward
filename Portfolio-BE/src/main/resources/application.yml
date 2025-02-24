@@ -12,6 +12,19 @@ spring:
     mongodb:
       uri: ${DB_URL}
       auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 465  # Use 465 for SSL or 587 for TLS
+    username: portfoliousers9@gmail.com
+    password: iays jvsl ahtd pbmk
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.enable: true  # Use this instead of spring.mail.ssl
+      mail.smtp.ssl.trust: smtp.gmail.com  # Allow Gmail's server to be trusted
+
 
   server:
     port: 8080
