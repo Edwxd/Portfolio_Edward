@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://portfolioedwardfe-production.up.railway.app")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class EmailController {
     @Autowired
     private EmailSenderService senderService;
