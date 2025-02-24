@@ -14,16 +14,16 @@ spring:
       auto-index-creation: true
   mail:
     host: smtp.gmail.com
-    port: 465  # Use 465 for SSL or 587 for TLS
-    username: portfoliousers9@gmail.com
-    password: iays jvsl ahtd pbmk
+    port: 465  
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
     protocol: smtp
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
       mail.smtp.starttls.required: true
-      mail.smtp.ssl.enable: true  # Use this instead of spring.mail.ssl
-      mail.smtp.ssl.trust: smtp.gmail.com  # Allow Gmail's server to be trusted
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.trust: smtp.gmail.com
 
 
   server:
