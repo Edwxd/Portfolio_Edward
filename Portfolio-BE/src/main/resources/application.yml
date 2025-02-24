@@ -12,6 +12,19 @@ spring:
     mongodb:
       uri: ${DB_URL}
       auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 465  
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.trust: smtp.gmail.com
+
 
   server:
     port: 8080
