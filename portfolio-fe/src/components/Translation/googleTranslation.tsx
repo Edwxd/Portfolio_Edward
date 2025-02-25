@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../App.css"
+
 
 export default function GoogleTranslateLoader(): null {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
