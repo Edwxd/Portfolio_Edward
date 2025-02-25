@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchBiography } from "../../api/Biography/getBiography";
 import { biographyRequestModel } from "../../Models/Biography/biographyRequestModel";
 import "./biographyFormBox.css";
+import { protectWords } from "../Translation/utils";
 
 
 
@@ -39,7 +40,7 @@ export default function BiographyPage() {
       className={`biography-container ${expanded ? "expanded" : ""}`}
       onClick={() => setExpanded(!expanded)}
     >
-      <h1>{biography[0].name}</h1>
+      <h1>{protectWords(biography[0].name)}</h1>
 
       {!expanded && <p className="click-to-see-more">Click to see more</p>}
 

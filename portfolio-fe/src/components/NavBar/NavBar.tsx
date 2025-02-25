@@ -4,6 +4,7 @@ import CommentForm from "../CommentsForm/commentsForm";
 import Login from "../../AuthService/login"; 
 import {useNavigate } from "react-router-dom";
 import GoogleTranslateLoader from "../Translation/googleTranslation";
+import { protectWords } from "../Translation/utils";
 
 
 
@@ -80,10 +81,9 @@ export default function Navbar() {
 
         <div id="google_translate_element" style={{ display: "none" }}></div>
         <GoogleTranslateLoader /> 
-        {/* Single toggle button for language switch */}
-        <button className="comments-button" onClick={handleTranslate}>
-                    {language === "en" ? "Fr" : "En"}
-                  </button>
+        <button className="comments-button" onClick={() => handleTranslate("fr")}>{protectWords("Fr")}</button>
+        <button className="comments-button" onClick={() => handleTranslate("en")}>{protectWords("En")}</button>
+          
           {/* Admin Controls - Only visible when authenticated */}
           {isAuthenticated && (
             <>
