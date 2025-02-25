@@ -15,7 +15,6 @@ export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("accessToken"));
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
-  const [language, setLanguage] = useState("en"); // Track current language
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -36,27 +35,23 @@ export default function Navbar() {
   };
 
   
-  // Function to switch language
-  const handleTranslate = () => {
-    const newLanguage = language === "en" ? "fr" : "en"; 
-    setLanguage(newLanguage);
-
+  const handleTranslate = (language: string) => {
     let attempts = 0;
     const maxAttempts = 10;
-
+  
     const interval = setInterval(() => {
       const selectElement = document.querySelector("select.goog-te-combo");
-
+  
       if (selectElement) {
-        (selectElement as HTMLSelectElement).value = newLanguage;
+        (selectElement as HTMLSelectElement).value = language;
         selectElement.dispatchEvent(new Event("change"));
-        console.log(`Language switched to ${newLanguage}`);
-        clearInterval(interval);
+        console.log(`Language switched to ${language}`);
+        clearInterval(interval); // Stop retrying
       } else if (++attempts >= maxAttempts) {
-        clearInterval(interval);
+        clearInterval(interval); // Stop after max attempts
         console.warn("Google Translate dropdown not found. Retrying...");
       }
-    }, 500);
+    }, 500); // Retry every 500ms
   };
   
 
@@ -84,6 +79,7 @@ export default function Navbar() {
         <button className="comments-button" onClick={() => handleTranslate("fr")}>{protectWords("Fr")}</button>
         <button className="comments-button" onClick={() => handleTranslate("en")}>{protectWords("En")}</button>
           
+
           {/* Admin Controls - Only visible when authenticated */}
           {isAuthenticated && (
             <>
