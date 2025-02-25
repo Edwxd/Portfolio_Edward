@@ -36,3 +36,52 @@
     transform: rotate(360deg);
   }
 }
+
+.goog-te-banner-frame, iframe.goog-te-banner-frame {
+  background: none !important;
+}
+
+.goog-te-gadget {
+  background: none !important;
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+
+
+.goog-te-gadget-simple {
+  display: none !important;
+}
+
+.goog-te-spinner-pos {
+  display: none !important;
+}
+
+.goog-tooltip {
+  display: none !important;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+/* Prevent Google Translate from modifying your styles */
+.goog-te-menu-value {
+  display: none !important;
+}
+
+.goog-te-combo {
+  display: none !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}

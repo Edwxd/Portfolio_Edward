@@ -1,0 +1,28 @@
+.goog-te-banner-frame, iframe.goog-te-banner-frame {
+    display: none !important;
+  }
+  
+  body {
+    top: 0 !important;
+  }
+  
+  .goog-te-gadget {
+    display: none !important;
+  }
+  
+  .goog-te-gadget-simple {
+    display: none !important;
+  }
+  
+  .goog-te-spinner-pos {
+    display: none !important;
+  }
+  
+  .goog-tooltip {
+    display: none !important;
+  }
+  
+  .skiptranslate {
+    display: none !important;
+  }
+  

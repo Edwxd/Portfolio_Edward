@@ -3,6 +3,8 @@ import "./NavBar.css";
 import CommentForm from "../CommentsForm/commentsForm";  
 import Login from "../../AuthService/login"; 
 import {useNavigate } from "react-router-dom";
+import GoogleTranslateLoader from "../Translation/googleTranslation";
+
 
 
 export default function Navbar() {
@@ -12,6 +14,7 @@ export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("accessToken"));
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
+  const [language, setLanguage] = useState("en"); // Track current language
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -31,10 +34,37 @@ export default function Navbar() {
     }
   };
 
+  
+  // Function to switch language
+  const handleTranslate = () => {
+    const newLanguage = language === "en" ? "fr" : "en"; 
+    setLanguage(newLanguage);
+
+    let attempts = 0;
+    const maxAttempts = 10;
+
+    const interval = setInterval(() => {
+      const selectElement = document.querySelector("select.goog-te-combo");
+
+      if (selectElement) {
+        (selectElement as HTMLSelectElement).value = newLanguage;
+        selectElement.dispatchEvent(new Event("change"));
+        console.log(`Language switched to ${newLanguage}`);
+        clearInterval(interval);
+      } else if (++attempts >= maxAttempts) {
+        clearInterval(interval);
+        console.warn("Google Translate dropdown not found. Retrying...");
+      }
+    }, 500);
+  };
+  
+
 
 
   return (
+    
     <nav className="navbar">
+      
       <div className="logo">Greetings Everyone</div>
 
       <div className={`dropdown ${dropdownOpen ? "open" : ""}`} ref={dropdownRef}>
@@ -47,8 +77,13 @@ export default function Navbar() {
         <button className="home-button" onClick={() => navigate("/")}>
             Home
         </button>
-          
 
+        <div id="google_translate_element" style={{ display: "none" }}></div>
+        <GoogleTranslateLoader /> 
+        {/* Single toggle button for language switch */}
+        <button className="comments-button" onClick={handleTranslate}>
+                    {language === "en" ? "Fr" : "En"}
+                  </button>
           {/* Admin Controls - Only visible when authenticated */}
           {isAuthenticated && (
             <>
@@ -64,6 +99,8 @@ export default function Navbar() {
               <button className="admin-button" onClick={() => navigate("/comments")}>
                 Review Comments
               </button>
+
+
             </>
           )}
 
@@ -77,13 +114,17 @@ export default function Navbar() {
 
             <a href="/OfficialCvFrench.pdf" download="OfficialCvFrench.pdf">
             <button className="comments-button">French CV</button>
-          </a>
+            </a>
+
+
 
           <Login />
 
 
         </div>
       </div>
+
+
 
       {/* Comment Form Overlay */}
       {showForm && (
