@@ -8,6 +8,8 @@
   color: white;
   font-family: "Poppins", sans-serif;
 
+  width: auto;
+
 }
 
 .navbar-buttons{
@@ -52,22 +54,21 @@
 position: fixed;
 top: 0;
 left: 0;
-width: 100vw;  /* Full width */
-height: 100vh; /* Full height */
+width: 100vw;
+height: auto;
 background: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
 color: white;
-border-radius: 0; /* Remove rounded edges */
-box-shadow: none; /* Remove shadow */
 display: flex;
-flex-direction: column;
-justify-content: center; /* Center items vertically */
-align-items: center; /* Center items horizontally */
-gap: 20px;
+flex-direction: column; /* Ensures single-column layout */
+justify-content: center; /* Centers items vertically */
+align-items: center; /* Centers items horizontally */
+gap: 10px; /* Adds spacing between buttons */
+
 opacity: 0;
 visibility: hidden;
 transform: translateY(-100%);
 transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
-z-index: 1000; /* Ensure it's on top */
+z-index: 1000;
 }
 
 /* Show dropdown when open */
@@ -221,13 +222,14 @@ transform: scale(1.05);
 }
 
 
+
+
 @media screen and (max-width: 768px) {
 .navbar {
   flex-direction: column;
   padding: 10px;
-  align-items: center;
   text-align: center;
-  width: 100%;
+  width: auto;
 }
 
 .logo {
@@ -235,9 +237,10 @@ transform: scale(1.05);
 }
 
 .dropdown {
-    width: 100%;
-    text-align: center;
-
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
     
 }
 
@@ -256,18 +259,20 @@ transform: scale(1.05);
 
 }
 .navbar-buttons button {
-  width: 80%;
-  font-size: 18px;
-  padding: 15px;
+  width: 90%; /* Slightly smaller for mobile */
+  font-size: 14px; /* Reduce font size */
+  padding: 8px 0; /* Adjust padding */
 }
+
+
 
 .dropdown-menu {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;  /* Full width */
-  height: 85vh; /* Full height */
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  width: 120vw;
+  height: 100vh; /* Ensure full height */
+  background:linear-gradient(rgba(1,1,1,1), rgba(0,0,0,0.5)); /* Semi-transparent black */
   color: black;
   border-radius: 0; /* Remove rounded edges */
   box-shadow: none; /* Remove shadow */
@@ -280,6 +285,16 @@ transform: scale(1.05);
   visibility: hidden;
   transform: translateY(-100%);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+  display: flex;
+  flex-wrap: wrap; /* Allows buttons to wrap to the next line */
+  justify-content: center; /* Center the buttons */
+  align-items: center;
+  gap: 10px; /* Spacing between buttons */
+  padding: 20px; /* Adds some padding inside the menu */
+  max-height: 90vh; /* Prevents overflowing */
+  overflow-y: auto; /* Adds scrolling if content overflows */
+
+  
 }
 
 /* Show full-screen dropdown when open */
