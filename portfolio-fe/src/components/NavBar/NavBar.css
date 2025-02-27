@@ -47,26 +47,43 @@
   transform: scale(1.05);
 }
 
-/* Dropdown Menu */
+/* Full-screen dropdown */
 .dropdown-menu {
-  position: fixed;
-  top: 30px; 
-  right: 30px; 
-  background: white;
-  color: black;
-  list-style: none;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  min-width: 180px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px); /* Start from above */
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;  /* Full width */
+height: 100vh; /* Full height */
+background: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+color: white;
+border-radius: 0; /* Remove rounded edges */
+box-shadow: none; /* Remove shadow */
+display: flex;
+flex-direction: column;
+justify-content: center; /* Center items vertically */
+align-items: center; /* Center items horizontally */
+gap: 20px;
+opacity: 0;
+visibility: hidden;
+transform: translateY(-100%);
+transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+z-index: 1000; /* Ensure it's on top */
 }
+
+/* Show dropdown when open */
+.dropdown.open .dropdown-menu {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+}
+
+/* Buttons inside dropdown */
+.dropdown-menu button {
+width: 30%; /* Make buttons larger */
+font-size: 18px; /* Increase font size */
+padding: 15px; /* Make buttons easier to click */
+}
+
 
 .leave-comments-button {
   background-color: #9370db;
@@ -90,12 +107,6 @@ transform: scale(1.05); ;
 
 }
 
-/* Show dropdown when open */
-.dropdown.open .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0); /* Slide in */
-}
 
 /* Buttons inside dropdown */
 .login-button,
@@ -212,17 +223,11 @@ transform: scale(1.05);
 
 @media screen and (max-width: 768px) {
 .navbar {
-    flex-direction: column; /* Stack elements vertically */
-    padding: 10px; /* Reduce padding */
-    width: 900px;
-    align-items: center;
-    text-align: center;
-      /* Centering the form */
-/* Centering the form */
-position:relative;
-
-
-
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .logo {
@@ -232,21 +237,36 @@ position:relative;
 .dropdown {
     width: 100%;
     text-align: center;
+
     
 }
 
+.login-button,
+.close-button {
+  width: 80%;  /* Make buttons larger */
+  font-size: 20px; /* Increase font size */
+  padding: 15px; /* Add more padding for better touch accessibility */
+}
+
+
 .dropdown-button {
-    width: 20%; /* Make buttons full width for better mobile UI */
-    margin-bottom: 10px;
-    position: relative;
+  width: 50%; /* Increase button size */
+  padding: 15px;
+  font-size: 18px;
+
+}
+.navbar-buttons button {
+  width: 80%;
+  font-size: 18px;
+  padding: 15px;
 }
 
 .dropdown-menu {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;  /* Full width */
-  height: 70vh; /* Full height */
+  width: 100%;  /* Full width */
+  height: 85vh; /* Full height */
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
   color: black;
   border-radius: 0; /* Remove rounded edges */
@@ -269,5 +289,8 @@ position:relative;
   transform: translateY(0);
   z-index: 999; /* Ensure it's on top */
 }
+
+
+
 }
 

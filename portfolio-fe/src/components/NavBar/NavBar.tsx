@@ -3,8 +3,8 @@ import "./NavBar.css";
 import CommentForm from "../CommentsForm/commentsForm";  
 import Login from "../../AuthService/login"; 
 import {useNavigate } from "react-router-dom";
-import GoogleTranslateLoader from "../Translation/googleTranslation";
 import { protectWords } from "../Translation/utils";
+import GoogleTranslateLoader from "../Translation/googleTranslation";
 
 
 
@@ -69,8 +69,9 @@ export default function Navbar() {
             Leave a Comment
         </button>
         <button className="dropdown-button" onClick={() => setDropdownOpen(!dropdownOpen)}>
-          Menu ▼
+          {dropdownOpen ? "Close Menu ▲" : "Menu ▼"}
         </button>
+
 
 
         </div>
@@ -110,16 +111,22 @@ export default function Navbar() {
 
 
           <a href="/OfficialCv.pdf" download="OfficialCv.pdf">
-            <button className="comments-button">English CV</button>
+            <button className="comments-button" style={{width: "100%"}}>English CV</button>
             </a>
 
             <a href="/OfficialCvFrench.pdf" download="OfficialCvFrench.pdf">
-            <button className="comments-button">French CV</button>
+            <button className="comments-button" style={{width: "100%"}}>French CV</button>
             </a>
 
 
 
-          <Login />
+          <div style={{width: "55%"}}>
+            <Login />
+          </div>
+
+          <button style={{width: "10%"}} className="comments-button" onClick={() => setDropdownOpen(false)}>
+            ✖
+          </button>
 
 
         </div>
