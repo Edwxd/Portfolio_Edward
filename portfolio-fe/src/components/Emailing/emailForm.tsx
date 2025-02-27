@@ -78,7 +78,7 @@ const EmailSender: React.FC<EmailSenderProps> = ({ biography, onClose }) => {
   return (
     <div className="email-modal-overlay">
       <div className="email-form">
-        <h2>Send Email</h2>
+        <h2 style={{color: "black"}}>Send Email</h2>
         <form onSubmit={sendEmail}>
           <input
             type="text"
