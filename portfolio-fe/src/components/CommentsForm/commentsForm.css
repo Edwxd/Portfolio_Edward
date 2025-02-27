@@ -2,115 +2,138 @@
 
 /* Form Container */
 .comment-form-container {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    margin: 50px auto; /* Center the form with space around */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column; /* Stack the form elements vertically */
-    gap: 15px; /* Space between form elements */
-  }
-  
-  /* Heading */
-  .comment-form-heading {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  margin: 50px auto; /* Center the form with space around */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Stack the form elements vertically */
+  gap: 15px; /* Space between form elements */
+}
+
+/* Heading */
+.comment-form-heading {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
 /* Input and Textarea */
 .comment-form-input,
 .comment-form-textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box;
-  margin-bottom: 15px; /* Add space between the input/textarea elements */
+width: 100%;
+padding: 12px;
+margin: 0;
+border-radius: 5px;
+border: 1px solid #ccc;
+font-size: 16px;
+box-sizing: border-box;
+margin-bottom: 15px; /* Add space between the input/textarea elements */
 }
 
 /* You can also add specific margin values for the form elements as needed */
 .comment-form-input:last-child,
 .comment-form-textarea:last-child {
-  margin-bottom: 20px; /* Optional, adds more space after the last input/textarea */
+margin-bottom: 20px; /* Optional, adds more space after the last input/textarea */
 }
 
-  
-  .comment-form-input:focus,
-  .comment-form-textarea:focus {
-    border-color: #5b9bd5;
-    outline: none;
-  }
-  
-  /* Button */
-  .comment-form-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #939393;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .comment-form-button:hover {
-    background-color: #7c7c7d;
-  }
-  
-  /* Error Message */
-  .comment-form-error {
-    font-size: 14px;
-    color: red;
-    margin-top: 10px;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 600px) {
-    .comment-form-container {
-      width: 90%;
-    }
-    .comment-form-button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  }
-  
-/* Close Button Below Submit Button */
-.close-button {
+
+.comment-form-input:focus,
+.comment-form-textarea:focus {
+  border-color: #5b9bd5;
+  outline: none;
+}
+
+/* Button */
+.comment-form-button {
   width: 100%;
   padding: 12px;
-  background-color: rgb(234, 130, 130);
+  background-color: #939393;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  margin-top: 10px; /* Space between submit and close buttons */
+  margin-bottom: 10px; /* Adjust the space as needed */
+
 }
 
-.close-button:hover {
-  background-color: #ff1e1e;
-}
-
-/* Overlay with blurred background and transparent white */
-.comment-form-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+.comments-close-button{
   width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
-  backdrop-filter: blur(8px); /* Blur effect */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  padding: 12px;
+  background-color: #f28181;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  gap: 15px;
+  margin-top: 10px; /* Adjust the space as needed */
 }
+
+.comment-form-button:hover {
+  background-color: #7c7c7d;
+}
+
+.comments-close-button:hover {
+  background-color: #f54b4b;
+}
+
+
+/* Error Message */
+.comment-form-error {
+  font-size: 14px;
+  color: red;
+  margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+.comment-form-container {
+  width: 90vw; /* Use 90% of the screen width */
+  max-width: 350px; /* Limit maximum width */
+  min-height: 50vh; /* Increase height for better readability */
+  padding: 20px;
+  
+  /* Centering the form */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-form-heading {
+    font-size: 18px; /* Reduce heading size for better fit */
+}
+
+.comment-form-input,
+.comment-form-textarea {
+    font-size: 14px; /* Reduce font size slightly */
+    padding: 10px; /* Adjust padding */
+}
+
+.comment-form-textarea {
+    min-height: 180px; /* Increase textarea height for readability */
+}
+
+.comment-form-button,
+.close-button {
+    font-size: 14px; /* Adjust button font size */
+    padding: 10px;
+}
+}
+
+  

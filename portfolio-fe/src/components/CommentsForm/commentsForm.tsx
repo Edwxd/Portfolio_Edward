@@ -67,7 +67,7 @@ export default function CommentForm({ onClose }: CommentFormProps) {
         <button type="submit" className="comment-form-button">Submit</button>
 
         {/* Close Button Below the Submit Button */}
-        <button type="button" className="close-button" onClick={onClose}>
+        <button type="button" className="comments-close-button" onClick={onClose}>
           Close
         </button>
       </form>

@@ -61,12 +61,19 @@ export default function Navbar() {
     
     <nav className="navbar">
       
-      <div className="logo">Greetings Everyone</div>
+      <div className="logo" style={{textAlign: "center"}}>Greetings Everyone</div>
 
       <div className={`dropdown ${dropdownOpen ? "open" : ""}`} ref={dropdownRef}>
+        <div className="navbar-buttons">
+        <button className="leave-comments-button" onClick={() => setShowForm(true)}>
+            Leave a Comment
+        </button>
         <button className="dropdown-button" onClick={() => setDropdownOpen(!dropdownOpen)}>
           Menu ▼
         </button>
+
+
+        </div>
 
 
         <div className="dropdown-menu">
@@ -100,9 +107,7 @@ export default function Navbar() {
             </>
           )}
 
-          <button className="comments-button" onClick={() => setShowForm(true)}>
-            Leave a Comment
-          </button>
+
 
           <a href="/OfficialCv.pdf" download="OfficialCv.pdf">
             <button className="comments-button">English CV</button>

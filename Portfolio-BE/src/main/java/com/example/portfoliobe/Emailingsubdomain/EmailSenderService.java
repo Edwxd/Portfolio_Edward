@@ -16,15 +16,18 @@ public class EmailSenderService {
         this.mailSender = mailSender;
     }
 
-    public Mono<Void> sendEmail(String to, String subject, String body) {
+    public Mono<Void> sendEmail(String to, String from, String subject, String body) {
         return Mono.fromRunnable(() -> {
+
+            String fullBody = from + ":\n" + body;
             try {
 
                 MimeMessage message = mailSender.createMimeMessage();
                 MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
                 helper.setTo(to);
+                helper.setFrom(from);
                 helper.setSubject(subject);
-                helper.setText(body, true);
+                helper.setText(fullBody, true);
 
                 mailSender.send(message);
             } catch (Exception e) {
