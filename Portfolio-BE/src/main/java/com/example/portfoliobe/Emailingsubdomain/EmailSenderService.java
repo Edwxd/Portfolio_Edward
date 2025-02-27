@@ -31,7 +31,7 @@ public class EmailSenderService {
 
                 mailSender.send(message);
             } catch (Exception e) {
-                throw new RuntimeException("Failed to send email to " + to, e);
+                throw new RuntimeException("Invalid email. Please check the email and try again.");
             }
         }).then();
     }
