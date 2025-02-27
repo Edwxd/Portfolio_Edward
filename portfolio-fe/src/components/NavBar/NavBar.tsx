@@ -120,7 +120,7 @@ export default function Navbar() {
 
 
 
-          <div style={{width: "60%"}}>
+          <div style={{width: "100%"}}>
             <Login />
           </div>
 
