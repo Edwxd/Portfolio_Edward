@@ -41,7 +41,7 @@ const EmailSender: React.FC<EmailSenderProps> = ({ biography, onClose }) => {
 
 
     try {
-      const response = await axios.get("http://localhost:8080/api/v1/send-email", {
+      const response = await axios.get("https://portfolioedward-production.up.railway.app/api/v1/send-email", {
         params: emailData,
       });
       setResponseMessage(response.data || "Email sent successfully!");
