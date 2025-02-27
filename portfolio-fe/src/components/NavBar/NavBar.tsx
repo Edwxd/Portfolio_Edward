@@ -120,11 +120,11 @@ export default function Navbar() {
 
 
 
-          <div style={{width: "55%"}}>
+          <div style={{width: "60%"}}>
             <Login />
           </div>
 
-          <button style={{width: "10%"}} className="comments-button" onClick={() => setDropdownOpen(false)}>
+          <button style={{width: "15%"}} className="comments-button" onClick={() => setDropdownOpen(false)}>
             ✖
           </button>
 
