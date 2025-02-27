@@ -80,6 +80,7 @@ const Login: React.FC = () => {
       localStorage.removeItem("accessToken"); // Remove access token
       setIsAuthenticated(false);
       setUserInfo(null);
+
     } catch (error) {
       console.error("Logout failed", error);
     }

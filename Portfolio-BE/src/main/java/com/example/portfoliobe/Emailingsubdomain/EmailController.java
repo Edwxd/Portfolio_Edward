@@ -12,8 +12,8 @@ public class EmailController {
     private EmailSenderService senderService;
 
     @GetMapping("/api/v1/send-email")
-    public Mono<String> sendEmail(@RequestParam String to, @RequestParam String subject, @RequestParam String body) {
-        return senderService.sendEmail(to, subject, body)
+    public Mono<String> sendEmail(@RequestParam String to,@RequestParam String from,  @RequestParam String subject, @RequestParam String body) {
+        return senderService.sendEmail(to,from, subject, body)
                 .then(Mono.just("Email sent successfully"))
                 .onErrorResume(e -> {
                     e.printStackTrace();
