@@ -1,311 +1,365 @@
-/* Navbar container */
+/* Modern Navbar styling with clean, consistent design */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #333;
-  color: white;
-  font-family: "Poppins", sans-serif;
-
-  width: auto;
-
-}
-
-.navbar-buttons{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Logo */
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Dropdown Button */
-.dropdown-button {
-  background-color: #444;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 8px;
-  transition: background 0.3s ease-in-out, transform 0.2s;
-}
-
-.dropdown-button:hover {
-  background-color: #555;
-  transform: scale(1.05);
-}
-
-/* Full-screen dropdown */
-.dropdown-menu {
-position: fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: auto;
-background: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
-color: white;
-display: flex;
-flex-direction: column; /* Ensures single-column layout */
-justify-content: center; /* Centers items vertically */
-align-items: center; /* Centers items horizontally */
-gap: 10px; /* Adds spacing between buttons */
-
-opacity: 0;
-visibility: hidden;
-transform: translateY(-100%);
-transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
-z-index: 1000;
-}
-
-/* Show dropdown when open */
-.dropdown.open .dropdown-menu {
-opacity: 1;
-visibility: visible;
-transform: translateY(0);
-}
-
-/* Buttons inside dropdown */
-.dropdown-menu button {
-width: 30%; /* Make buttons larger */
-font-size: 18px; /* Increase font size */
-padding: 15px; /* Make buttons easier to click */
-}
-
-
-.leave-comments-button {
-  background-color: #9370db;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 8px;
-  transition: background 0.3s ease-in-out, transform 0.2s;
-  height: 60px;
-  text-align: center;
-
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
-}
-
-.leave-comments-button:hover {
-
-background-color: #7b5ec9;
-transform: scale(1.05); ;
-
-}
-
-
-/* Buttons inside dropdown */
-.login-button,
-.comments-button {
-  background-color: #9370db;
-  color: white;
-  padding: 12px 18px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 6px;
-  width: 100%;
-  transition: background 0.3s ease-in-out, transform 0.2s;
-}
-
-.login-button:hover,
-.comments-button:hover {
-  background-color: #7b5ec9;
-  transform: scale(1.05);
-}
-
-
-/* NavBar.css */
-/* Overlay for the comment form */
-.comment-form-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-backdrop-filter: blur(10px); /* Apply blur effect */
-background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 999; /* Ensure it's above everything */
-}
-
-
-/* NavBar.css */
-/* Overlay for the comment form */
-.comment-form-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 999; /* Make sure it's on top */
-}
-
-/* Container for the form */
-.comment-form-container {
-background-color: white;
-padding: 20px;
-border-radius: 8px;
-width: 300px; /* Adjust the width of the form */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Close button styling */
-.close-button {
-background-color: red;
-color: white;
-border: none;
-padding: 10px;
-margin-top: 10px;
-width: 100%;
-cursor: pointer;
-}
-
-.close-button:hover {
-background-color: darkred;
-}
-
-
-.admin-button {
-background-color: #9370db;
-color: white;
-padding: 12px 18px;
-border: none;
-cursor: pointer;
-font-size: 16px;
-border-radius: 6px;
-width: 100%;
-transition: background 0.3s ease-in-out, transform 0.2s;
-}
-
-.admin-button:hover {
-background-color: #7b5ec9;
-transform: scale(1.05);
-}
-
-.home-button {
-background-color: #9370db;
-color: white;
-padding: 12px 18px;
-border: none;
-cursor: pointer;
-font-size: 16px;
-border-radius: 6px;
-width: 100%;
-transition: background 0.3s ease-in-out, transform 0.2s;
-}
-
-.home-button:hover {
-background-color: #7b5ec9;
-transform: scale(1.05);
-}
-
-
-
-
-@media screen and (max-width: 768px) {
-.navbar {
-  flex-direction: column;
-  padding: 10px;
-  text-align: center;
-  width: auto;
-}
-
-.logo {
-    margin-bottom: 10px; /* Add spacing between logo and dropdown */
-}
-
-.dropdown {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-    
-}
-
-.login-button,
-.close-button {
-  width: 80%;  /* Make buttons larger */
-  font-size: 20px; /* Increase font size */
-  padding: 15px; /* Add more padding for better touch accessibility */
-}
-
-
-.dropdown-button {
-  width: 50%; /* Increase button size */
-  padding: 15px;
-  font-size: 18px;
-
-}
-.navbar-buttons button {
-  width: 90%; /* Slightly smaller for mobile */
-  font-size: 14px; /* Reduce font size */
-  padding: 8px 0; /* Adjust padding */
-}
-
-
-
-.dropdown-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; /* Ensure full height */
-  background:linear-gradient(rgba(1,1,1,1), rgba(0,0,0,0.5)); /* Semi-transparent black */
-  color: black;
-  border-radius: 0; /* Remove rounded edges */
-  box-shadow: none; /* Remove shadow */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center items vertically */
-  align-items: center; /* Center items horizontally */
-  gap: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-100%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
-  display: flex;
-  flex-wrap: wrap; /* Allows buttons to wrap to the next line */
-  justify-content: center; /* Center the buttons */
-  align-items: center;
-  gap: 10px; /* Spacing between buttons */
-  padding: 20px; /* Adds some padding inside the menu */
-  max-height: 90vh; /* Prevents overflowing */
-  overflow-y: auto; /* Adds scrolling if content overflows */
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: "Poppins", sans-serif;
+    transition: padding 0.3s ease;
+  }
   
-}
-
-/* Show full-screen dropdown when open */
-.dropdown.open .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  z-index: 999; /* Ensure it's on top */
-}
-
-
-
-}
-
+  /* Logo styling */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.5px;
+    text-align: center;
+    transition: font-size 0.3s ease;
+  }
+  
+  /* Navbar buttons container */
+  .navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: gap 0.3s ease;
+  }
+  
+  /* Base button styling */
+  .navbar button {
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  /* Comment button and Menu button */
+  .leave-comments-button,
+  .dropdown-button {
+    background-color: #555;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    height: auto;
+    transition: all 0.3s ease;
+  }
+  
+  .leave-comments-button:hover,
+  .dropdown-button:hover {
+    background-color: #666;
+  }
+  
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+  }
+  
+  /* Full-screen dropdown menu */
+  .dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(40, 40, 40, 0.96);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  /* Show dropdown when open */
+  .dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  /* Standard menu buttons */
+  .menu-button {
+    background-color: #555;
+    color: white;
+    padding: 0.85rem 1.5rem;
+    width: 250px;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-button:hover {
+    background-color: #666;
+  }
+  
+  /* Button text and icon styling */
+  .button-text, .button-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .button-icon {
+    margin-left: 8px;
+    font-size: 0.9em;
+  }
+  
+  /* Language buttons container */
+  .language-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+    width: 250px;
+  }
+  
+  .lang-button {
+    flex: 1;
+    width: auto;
+    padding: 0.85rem 0.5rem;
+    margin-bottom: 0;
+  }
+  
+  /* Menu links (for CV downloads) */
+  .menu-link {
+    width: 250px;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  /* Close button */
+  .close-menu-button {
+    background-color: #555;
+    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .close-menu-button:hover {
+    background-color: #666;
+  }
+  
+  /* Login container */
+  .login-container {
+    width: 250px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Style for login component buttons */
+  .login-container button {
+    background-color: #555;
+    color: white;
+    padding: 0.85rem 1.5rem;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-container button:hover {
+    background-color: #666;
+  }
+  
+  /* Style for login component inputs */
+  .login-container input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Hide Google Translate element but keep it accessible */
+  .translate-container {
+    display: none;
+  }
+  
+  /* Comment form overlay */
+  .comment-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  /* Comment form container */
+  .comment-form-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Close button for forms */
+  .close-button {
+    background-color: #555;
+    color: white;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 4px;
+  }
+  
+  .close-button:hover {
+    background-color: #666;
+  }
+  
+  /* Mobile optimizations */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      padding: 0.75rem 1rem;
+    }
+    
+    .logo {
+      font-size: 1.25rem;
+    }
+    
+    .navbar-buttons {
+      gap: 0.5rem;
+    }
+    
+    .leave-comments-button,
+    .dropdown-button {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .menu-button,
+    .menu-link,
+    .login-container {
+      width: 220px;
+    }
+    
+    .comment-form-container {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Small screens (tablets) */
+  @media screen and (max-width: 600px) {
+    .navbar {
+      padding: 0.6rem 0.8rem;
+    }
+    
+    .leave-comments-button,
+    .dropdown-button {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
+    }
+    
+    .menu-button,
+    .menu-link,
+    .login-container {
+      width: 200px;
+    }
+    
+    .close-menu-button {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  /* Very small screens (phones) */
+  @media screen and (max-width: 480px) {
+    .navbar {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.6rem 0.5rem;
+    }
+    
+    .logo {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .dropdown-menu {
+      padding: 1.5rem 1rem;
+    }
+    
+    .menu-button,
+    .menu-link,
+    .login-container {
+      width: 180px;
+    }
+    
+    .menu-button {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    /* Stack navbar buttons on very small screens */
+    .navbar-buttons {
+      flex-direction: column;
+      width: 100%;
+      gap: 0.4rem;
+    }
+    
+    .leave-comments-button,
+    .dropdown-button {
+      width: 100%;
+      padding: 0.5rem;
+    }
+    
+    .close-menu-button {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .comment-form-container {
+      padding: 1.2rem;
+      width: 95%;
+    }
+  }
+  
+  /* Tiny screens */
+  @media screen and (max-width: 320px) {
+    .logo {
+      font-size: 1rem;
+    }
+    
+    .menu-button,
+    .menu-link,
+    .login-container {
+      width: 160px;
+    }
+    
+    .menu-button {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+    }
+    
+    .dropdown-menu {
+      gap: 0.8rem;
+    }
+  }
