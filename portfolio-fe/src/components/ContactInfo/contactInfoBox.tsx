@@ -4,9 +4,9 @@ import { biographyRequestModel } from "../../Models/Biography/biographyRequestMo
 
 import "./contactInfoBox.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
-import EmailSender from "../Emailing/emailForm"; 
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import EmailSender from "../Emailing/emailForm";
 
 export default function BiographyPage() {
   const [biography, setBiography] = useState<biographyRequestModel[] | null>(null);
@@ -33,12 +33,12 @@ export default function BiographyPage() {
     loadBiography();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-  if (!biography) return <p>No biography data available.</p>;
+  if (loading) return <div className="loading-state">Loading...</div>;
+  if (error) return <div className="error-state">{error}</div>;
+  if (!biography) return <div className="error-state">No biography data available.</div>;
 
   return (
-    <div>
+    <div className="biography-page">
       <div className="contact-info-container">
         <h1>Contact Information</h1>
         <div className="contact-info-text">
@@ -46,16 +46,19 @@ export default function BiographyPage() {
             <strong>Here is my contact information</strong>
           </p>
           <div className="divider"></div>
-          <p>
+          
+          <div className="contact-item">
             <strong>Email:</strong> {biography[0].email}
-            <div className="social-links">
+          </div>
+          
+          <div className="social-links">
+            <div className="social-icon-wrapper" onClick={() => setShowEmailForm(true)}>
               <FontAwesomeIcon
                 icon={faEnvelope}
                 className="social-icon"
-                onClick={() => setShowEmailForm(true)}
               />
             </div>
-          </p>
+          </div>
 
           <div className="divider"></div>
 
@@ -63,10 +66,10 @@ export default function BiographyPage() {
             <strong>Learn more about my projects and experience:</strong>
           </p>
           <div className="social-links">
-            <a href={biography[0].githubUrl} target="_blank" rel="noopener noreferrer">
+            <a href={biography[0].githubUrl} target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
               <FontAwesomeIcon icon={faGithub} className="social-icon" />
             </a>
-            <a href={biography[0].linkedinUrl} target="_blank" rel="noopener noreferrer">
+            <a href={biography[0].linkedinUrl} target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
               <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
             </a>
           </div>
@@ -74,7 +77,16 @@ export default function BiographyPage() {
         </div>
       </div>
 
-      {showEmailForm && <EmailSender biography={biography} onClose={() => setShowEmailForm(false)} />}
+      {showEmailForm && (
+        <div className="email-overlay" onClick={(e) => {
+          if (e.target === e.currentTarget) setShowEmailForm(false);
+        }}>
+          <div className="email-form-container">
+            <h2>Send Me a Message</h2>
+            <EmailSender biography={biography} onClose={() => setShowEmailForm(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
