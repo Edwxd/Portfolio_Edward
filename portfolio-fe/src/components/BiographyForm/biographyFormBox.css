@@ -1,141 +1,171 @@
-/* Biography container */
-.biography-container {
+/* Modern biography styling */
+.biography-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
     width: 100%;
-    max-height: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(147, 112, 219, 0.15);
-    border-radius: 15px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Biography container with expand/collapse functionality */
+  .biography-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out, 
-                max-width 0.4s ease-in-out, max-height 0.4s ease-in-out, padding 0.3s ease;
+    position: relative;
     font-family: "Poppins", sans-serif;
-    max-width: 400px;
-    width: 100%;
-    box-sizing: border-box;
     overflow: hidden;
-}
-
-/* When expanded */
-.biography-container.expanded {
-    max-width: 900px;
-    max-height: 1000px;  
-    padding: 50px;
-    background: #fff;
-}
-
-/* Close animation - smooth collapse */
-.biography-container:not(.expanded) {
-    max-height: 300px;  /* Shrinks smoothly */
-    padding: 20px;
-}
-
-/* Hover effect */
-.biography-container:hover {
-    background: #fff;
-    transform: scale(1.02);
-}
-
-/* Title Styling */
-.biography-container h1 {
-    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 350px;
+  }
+  
+  /* Expanded state */
+  .biography-container.expanded {
+    max-width: 800px;
+    max-height: 1200px;
+  }
+  
+  /* Hover effect */
+  .biography-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Title style */
+  .biography-name {
+    font-size: 1.6rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 10px;
-}
-
-/* Subtitle (Click to See More) */
-.click-to-see-more {
-    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Click to see more prompt */
+  .click-to-see-more {
+    font-size: 0.9rem;
     color: #666;
-    margin-top: 5px;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.biography-container:hover .click-to-see-more {
-    opacity: 1;
-}
-
-.biography-container.expanded .click-to-see-more {
-    display: none;
-}
-
-/* Biography Content */
-.biography-text-container {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-.biography-container.expanded .biography-text-container {
-    max-height: 600px;
-}
-
-.biography-text {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    line-height: 1.6;
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+  }
+  
+  .biography-container:hover .click-to-see-more {
     color: #444;
-}
-
-.biography-container.expanded .biography-text {
-    opacity: 1;
-}
-
-/* Profile Picture */
-.profile-picture-container {
+  }
+  
+  /* Profile image styling */
+  .profile-image-container {
     width: 120px;
     height: 120px;
+    margin: 1rem auto;
     border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #f5f5f5;
+    transition: all 0.3s ease;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
-    margin: 15px auto;
-    border: 3px solid #9370DB;
-    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
-}
-
-.biography-container:hover .profile-picture-container {
+    transition: transform 0.5s ease;
+  }
+  
+  .biography-container:hover .profile-image {
     transform: scale(1.05);
-    border-color: #7b5ec9;
-}
-
-.biography-text p {
-    text-align: justify;
-    text-justify: inter-word;
-}
-
-.biography-text p:last-child {
-    margin-bottom: 15px;
-}
-
-/* Divider Line */
-.divider {
-    width: 50%;
-    height: 2px;
-    background: #9370DB;
-    margin: 15px auto;
-    opacity: 0.7;
-}
-
-/* Tooltip Styling */
-.tooltip {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+  }
+  
+  /* Biography content - hidden until expanded */
+  .biography-content {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.biography-container:hover .tooltip {
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+  
+  .biography-container.expanded .biography-content {
     opacity: 1;
-}
+    max-height: 1000px;
+  }
+  
+  /* Text style */
+  .biography-description {
+    color: #444;
+    line-height: 1.7;
+    font-size: 1rem;
+    text-align: justify;
+    margin: 1rem 0;
+  }
+  
+  .biography-description p {
+    margin: 0;
+  }
+  
+  /* Divider style */
+  .divider {
+    width: 60%;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 1.5rem auto;
+  }
+  
+  /* Loading and error states */
+  .loading-state,
+  .error-state {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin: 2rem auto;
+    max-width: 400px;
+    color: #555;
+  }
+  
+  .error-state {
+    color: #d32f2f;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .biography-container {
+      padding: 1.5rem;
+      max-width: 90%;
+    }
+    
+    .biography-container.expanded {
+      max-width: 90%;
+    }
+    
+    .profile-image-container {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .biography-name {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .biography-container {
+      padding: 1.2rem;
+    }
+    
+    .profile-image-container {
+      width: 90px;
+      height: 90px;
+    }
+    
+    .biography-name {
+      font-size: 1.3rem;
+    }
+    
+    .biography-description {
+      font-size: 0.95rem;
+    }
+  }

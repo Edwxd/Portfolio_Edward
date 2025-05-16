@@ -4,8 +4,6 @@ import { biographyRequestModel } from "../../Models/Biography/biographyRequestMo
 import "./biographyFormBox.css";
 import { protectWords } from "../Translation/utils";
 
-
-
 export default function BiographyPage() {
   const [biography, setBiography] = useState<biographyRequestModel[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -31,29 +29,30 @@ export default function BiographyPage() {
     loadBiography();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-  if (!biography) return <p>No biography data available.</p>;
+  if (loading) return <div className="loading-state">Loading...</div>;
+  if (error) return <div className="error-state">{error}</div>;
+  if (!biography) return <div className="error-state">No biography data available.</div>;
 
   return (
-    <div
-      className={`biography-container ${expanded ? "expanded" : ""}`}
-      onClick={() => setExpanded(!expanded)}
-    >
-      <h1>{protectWords(biography[0].name)}</h1>
+    <div className="biography-wrapper">
+      <div
+        className={`biography-container ${expanded ? "expanded" : ""}`}
+        onClick={() => setExpanded(!expanded)}
+      >
+        <h1 className="biography-name">{protectWords(biography[0].name)}</h1>
 
-      {!expanded && <p className="click-to-see-more">Click to see more</p>}
+        {!expanded && <p className="click-to-see-more">Click to see more</p>}
 
-      <img src={biography[0].imageUrl} alt="Biography" className="profile-picture-container" />
+        <div className="profile-image-container">
+          <img src={biography[0].imageUrl} alt="Biography" className="profile-image" />
+        </div>
 
-      <div className="biography-text-container">
-        <div className="biography-text">
+        <div className="biography-content">
           <div className="divider"></div>
-          <p>{biography[0].description}</p>
+          <div className="biography-description">
+            <p>{biography[0].description}</p>
+          </div>
           <div className="divider"></div>
-
-
-
         </div>
       </div>
     </div>
