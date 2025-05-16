@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./NavBar.css";
 import CommentForm from "../CommentsForm/commentsForm";  
 import Login from "../../AuthService/login"; 
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import GoogleTranslateLoader from "../Translation/googleTranslation"
 import { protectWords } from "../Translation/utils";
-import GoogleTranslateLoader from "../Translation/googleTranslation";
-
 
 
 export default function Navbar() {
@@ -34,7 +33,6 @@ export default function Navbar() {
     }
   };
 
-  
   const handleTranslate = (language: string) => {
     let attempts = 0;
     const maxAttempts = 10;
@@ -53,86 +51,76 @@ export default function Navbar() {
       }
     }, 500); // Retry every 500ms
   };
-  
-
-
 
   return (
-    
     <nav className="navbar">
-      
-      <div className="logo" style={{textAlign: "center"}}>Greetings Everyone</div>
+      <div className="logo">Greetings Everyone</div>
 
       <div className={`dropdown ${dropdownOpen ? "open" : ""}`} ref={dropdownRef}>
         <div className="navbar-buttons">
-        <button className="leave-comments-button" onClick={() => setShowForm(true)}>
-            Leave a Comment
-        </button>
-        <button className="dropdown-button" onClick={() => setDropdownOpen(!dropdownOpen)}>
-          {dropdownOpen ? "Close Menu ▲" : "Menu ▼"}
-        </button>
-
-
-
+          <button className="leave-comments-button" onClick={() => setShowForm(true)}>
+            <span className="button-text">Leave a Comment</span>
+            <span className="button-icon">💬</span>
+          </button>
+          <button className="dropdown-button" onClick={() => setDropdownOpen(!dropdownOpen)}>
+            <span className="button-text">{dropdownOpen ? "Close" : "Menu"}</span>
+            <span className="button-icon">{dropdownOpen ? "▲" : "▼"}</span>
+          </button>
         </div>
 
-
         <div className="dropdown-menu">
-        <button className="home-button" onClick={() => navigate("/")}>
+          <button className="menu-button" onClick={() => navigate("/")}>
             Home
-        </button>
+          </button>
 
-        <div id="google_translate_element" style={{ display: "none" }}></div>
-        <GoogleTranslateLoader /> 
-        <button className="comments-button" onClick={() => handleTranslate("fr")}>{protectWords("Fr")}</button>
-        <button className="comments-button" onClick={() => handleTranslate("en")}>{protectWords("En")}</button>
+          <div id="google_translate_element" className="translate-container"></div>
+          <GoogleTranslateLoader />
           
+          <div className="language-buttons">
+            <button className="menu-button lang-button" onClick={() => handleTranslate("fr")}>
+              {protectWords("Fr")}
+            </button>
+            
+            <button className="menu-button lang-button" onClick={() => handleTranslate("en")}>
+              {protectWords("En")}
+            </button>
+          </div>
 
           {/* Admin Controls - Only visible when authenticated */}
           {isAuthenticated && (
             <>
-              <button className="admin-button" onClick={() => navigate("/manage-projects")}>
+              <button className="menu-button" onClick={() => navigate("/manage-projects")}>
                 Manage Projects
               </button>
-              <button className="admin-button" onClick={() => navigate("/manage-biography")} >
+              <button className="menu-button" onClick={() => navigate("/manage-biography")}>
                 Manage Biography
               </button>
-              <button className="admin-button" onClick={() => navigate("/manage-contact-info")}>
+              <button className="menu-button" onClick={() => navigate("/manage-contact-info")}>
                 Manage Contact Information
               </button>
-              <button className="admin-button" onClick={() => navigate("/comments")}>
+              <button className="menu-button" onClick={() => navigate("/comments")}>
                 Review Comments
               </button>
-
-
             </>
           )}
 
+          <a href="/OfficialCv.pdf" download="OfficialCv.pdf" className="menu-link">
+            <button className="menu-button">English CV</button>
+          </a>
 
+          <a href="/OfficialCvFrench.pdf" download="OfficialCvFrench.pdf" className="menu-link">
+            <button className="menu-button">French CV</button>
+          </a>
 
-          <a href="/OfficialCv.pdf" download="OfficialCv.pdf">
-            <button className="comments-button" style={{width: "100%"}}>English CV</button>
-            </a>
-
-            <a href="/OfficialCvFrench.pdf" download="OfficialCvFrench.pdf">
-            <button className="comments-button" style={{width: "100%"}}>French CV</button>
-            </a>
-
-
-
-          <div style={{width: "100%"}}>
+          <div className="login-container">
             <Login />
           </div>
 
-          <button style={{width: "15%"}} className="comments-button" onClick={() => setDropdownOpen(false)}>
+          <button className="close-menu-button" onClick={() => setDropdownOpen(false)}>
             ✖
           </button>
-
-
         </div>
       </div>
-
-
 
       {/* Comment Form Overlay */}
       {showForm && (
