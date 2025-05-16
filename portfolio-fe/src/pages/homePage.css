@@ -14,38 +14,60 @@ body {
 .biography-contact-home-container {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Slightly increased gap for better separation */
+  gap: 25px; /* Slightly reduced gap */
   width: 100%;
-  max-width: 1100px; /* Slightly smaller than before */
+  max-width: 1100px;
   margin: 20px auto;
-  padding: 0 15px; /* Added horizontal padding */
+  padding: 0 15px;
 }
 
-/* Biography container */
+/* Biography container - slightly larger */
 .biography-home-container {
-  flex: 0.48; /* Make slightly less than half to account for gap */
-  max-width: 450px; /* Enforce maximum width */
+  flex: 0.54; /* Increased from 0.48 to make bio larger */
+  max-width: 530px; /* Increased maximum width */
 }
 
-/* Contact Info container */
+/* Contact Info container - slightly smaller */
 .contact-info-home-container {
-  flex: 0.48; /* Make slightly less than half to account for gap */
-  max-width: 450px; /* Enforce maximum width */
+  flex: 0.46; /* Decreased from 0.48 to make contact smaller */
+  max-width: 430px; /* Decreased maximum width */
 }
 
-/* Size control for the containers inside */
-.biography-contact-home-container .biography-container,
+/* Size control for the biography container */
+.biography-contact-home-container .biography-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  padding: 1.8rem !important; /* Slightly reduced padding */
+  max-height: 340px !important; /* Slightly reduced height */
+}
+
+/* Size control for the contact info container */
 .biography-contact-home-container .contact-info-container {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   box-sizing: border-box !important;
+  padding: 1.8rem !important; /* Slightly reduced padding */
+}
+
+/* Make biography image smaller */
+.biography-container .profile-image-container {
+  width: 110px !important;
+  height: 110px !important;
+  margin: 0.8rem auto !important;
+}
+
+/* Adjust biography text size */
+.biography-container .biography-name {
+  font-size: 1.5rem !important;
 }
 
 /* Projects container */
 .projects-home-container {
   width: 100%;
-  max-width: 950px; /* Made smaller than biography-contact container */
+  max-width: 950px;
   padding: 0 15px;
   margin: 30px auto;
 }
@@ -56,7 +78,7 @@ body {
   max-width: 100% !important;
   margin: 0 !important;
   box-sizing: border-box !important;
-  padding: 1.8rem !important; /* Smaller padding */
+  padding: 1.8rem !important;
 }
 
 /* Comments container */
@@ -67,7 +89,7 @@ body {
   margin: 30px auto;
   padding: 0 15px;
   width: 100%;
-  max-width: 950px; /* Made smaller to match project container */
+  max-width: 950px;
   overflow: hidden;
 }
 
@@ -101,11 +123,16 @@ footer {
     gap: 30px;
   }
 
-  .biography-home-container, 
+  .biography-home-container {
+    flex: 1;
+    width: 100%;
+    max-width: 480px; /* Bio slightly larger on mobile */
+  }
+  
   .contact-info-home-container {
     flex: 1;
     width: 100%;
-    max-width: 500px; /* Slightly larger on mobile for better readability */
+    max-width: 450px; /* Contact slightly smaller on mobile */
   }
   
   .projects-home-container,
@@ -114,7 +141,9 @@ footer {
   }
   
   /* Adjust internal padding on smaller screens */
-  .projects-home-container .project-container {
+  .projects-home-container .project-container,
+  .biography-contact-home-container .biography-container,
+  .biography-contact-home-container .contact-info-container {
     padding: 1.5rem !important;
   }
 }
@@ -127,7 +156,9 @@ footer {
   }
   
   /* Even smaller on very small screens */
-  .projects-home-container .project-container {
+  .projects-home-container .project-container,
+  .biography-contact-home-container .biography-container,
+  .biography-contact-home-container .contact-info-container {
     padding: 1.2rem !important;
   }
   
@@ -136,5 +167,11 @@ footer {
   .projects-home-container,
   .comments-managment-container {
     max-width: 100%;
+  }
+  
+  /* Further reduce profile image on small screens */
+  .biography-container .profile-image-container {
+    width: 90px !important;
+    height: 90px !important;
   }
 }
