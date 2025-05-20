@@ -30,6 +30,8 @@ spring:
       mail.smtp.starttls.required: true
       mail.smtp.ssl.enable: true
       mail.smtp.ssl.trust: smtp.gmail.com
+  main:
+    allow-bean-definition-overriding: true
 
 
   server:
