@@ -1,40 +1,43 @@
 package com.example.portfoliobe.utils.ProjectConfigs;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.boot.actuate.autoconfigure.metrics.SystemMetricsAutoConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
+import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics;
+import io.micrometer.core.instrument.binder.system.UptimeMetrics;
+import io.micrometer.core.instrument.MeterRegistry;
 
 @Configuration
+@AutoConfigureBefore(SystemMetricsAutoConfiguration.class)
 public class MetricsConfig {
 
     @Bean
-    public static BeanFactoryPostProcessor removeProblemBeans() {
-        return new BeanFactoryPostProcessor() {
+    public ProcessorMetrics processorMetrics() {
+        // Return a no-op implementation that won't fail
+        return new ProcessorMetrics() {
             @Override
-            public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-                if (beanFactory instanceof DefaultListableBeanFactory) {
-                    DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory) beanFactory;
-                    if (defaultListableBeanFactory.containsBeanDefinition("processorMetrics")) {
-                        defaultListableBeanFactory.removeBeanDefinition("processorMetrics");
-                    }
-                } else {
-                    // Alternative approach if we can't cast to DefaultListableBeanFactory
-                    if (beanFactory.containsBeanDefinition("processorMetrics")) {
-                        try {
-                            // Try to get the bean definition and modify it to be "not eligible for autowiring"
-                            BeanDefinition definition = beanFactory.getBeanDefinition("processorMetrics");
-                            definition.setAutowireCandidate(false);
-                        } catch (Exception e) {
-                            // Log the exception but continue
-                            System.err.println("Could not modify processorMetrics bean: " + e.getMessage());
-                        }
-                    }
-                }
+            public void bindTo(MeterRegistry registry) {
+                // Do nothing
             }
         };
+    }
+
+    @Bean
+    public FileDescriptorMetrics fileDescriptorMetrics() {
+        // Return a no-op implementation that won't fail
+        return new FileDescriptorMetrics() {
+            @Override
+            public void bindTo(MeterRegistry registry) {
+                // Do nothing
+            }
+        };
+    }
+
+    // You might need to override other system metrics as well
+    @Bean
+    public UptimeMetrics uptimeMetrics() {
+        return new UptimeMetrics();
     }
 }
