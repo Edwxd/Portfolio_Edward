@@ -8,10 +8,10 @@ website:
   domain: portfolioedwardfe-production.up.railway.app  # Use frontend domain
 
 
-custom:
+management:
   metrics:
-    processor:
-      disabled: true
+    enable:
+      process.cpu: false
 
 spring:
   data:
