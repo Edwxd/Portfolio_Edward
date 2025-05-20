@@ -5,7 +5,7 @@ plugins {
     id 'io.freefair.lombok' version '6.6.1'
 }
 
-group = 'com.gouriny'
+group = 'com.example'  // Make sure this matches your package structure
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -25,12 +25,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
-
     implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
-
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-
+    // Reactor Core explicitly (for Mono and Flux)
+    implementation 'io.projectreactor:reactor-core'
 
     // Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -40,13 +39,17 @@ dependencies {
     // MongoDB Dependencies
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
 
+    // Lombok (although it's included via the plugin, let's be explicit)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
-    // MapStruct (if needed)
+    // MapStruct
     implementation "org.mapstruct:mapstruct:1.5.3.Final"
     annotationProcessor "org.mapstruct:mapstruct-processor:1.5.3.Final"
 
-
-
+    // Test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
 }
 
 tasks.named('test') {
