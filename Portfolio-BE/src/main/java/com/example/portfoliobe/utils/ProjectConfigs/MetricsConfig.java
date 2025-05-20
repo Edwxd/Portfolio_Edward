@@ -4,9 +4,7 @@ import org.springframework.boot.actuate.autoconfigure.metrics.SystemMetricsAutoC
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
-import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics;
-import io.micrometer.core.instrument.binder.system.UptimeMetrics;
+import org.springframework.context.annotation.Primary;
 import io.micrometer.core.instrument.binder.MeterBinder;
 import io.micrometer.core.instrument.MeterRegistry;
 
@@ -15,8 +13,8 @@ import io.micrometer.core.instrument.MeterRegistry;
 public class MetricsConfig {
 
     @Bean
-    public MeterBinder processorMetrics() {
-        // Return a MeterBinder that does nothing
+    @Primary
+    public MeterBinder customProcessorMetrics() {
         return new MeterBinder() {
             @Override
             public void bindTo(MeterRegistry registry) {
@@ -26,8 +24,8 @@ public class MetricsConfig {
     }
 
     @Bean
-    public MeterBinder fileDescriptorMetrics() {
-        // Return a MeterBinder that does nothing
+    @Primary
+    public MeterBinder customFileDescriptorMetrics() {
         return new MeterBinder() {
             @Override
             public void bindTo(MeterRegistry registry) {
@@ -37,8 +35,8 @@ public class MetricsConfig {
     }
 
     @Bean
-    public MeterBinder uptimeMetrics() {
-        // Create a simple implementation that doesn't use cgroups
+    @Primary
+    public MeterBinder customUptimeMetrics() {
         return new MeterBinder() {
             @Override
             public void bindTo(MeterRegistry registry) {
