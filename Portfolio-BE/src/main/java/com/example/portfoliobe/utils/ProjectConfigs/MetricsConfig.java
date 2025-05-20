@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
 import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics;
 import io.micrometer.core.instrument.binder.system.UptimeMetrics;
+import io.micrometer.core.instrument.binder.MeterBinder;
 import io.micrometer.core.instrument.MeterRegistry;
 
 @Configuration
@@ -14,9 +15,9 @@ import io.micrometer.core.instrument.MeterRegistry;
 public class MetricsConfig {
 
     @Bean
-    public ProcessorMetrics processorMetrics() {
-        // Return a no-op implementation that won't fail
-        return new ProcessorMetrics() {
+    public MeterBinder processorMetrics() {
+        // Return a MeterBinder that does nothing
+        return new MeterBinder() {
             @Override
             public void bindTo(MeterRegistry registry) {
                 // Do nothing
@@ -25,9 +26,9 @@ public class MetricsConfig {
     }
 
     @Bean
-    public FileDescriptorMetrics fileDescriptorMetrics() {
-        // Return a no-op implementation that won't fail
-        return new FileDescriptorMetrics() {
+    public MeterBinder fileDescriptorMetrics() {
+        // Return a MeterBinder that does nothing
+        return new MeterBinder() {
             @Override
             public void bindTo(MeterRegistry registry) {
                 // Do nothing
@@ -35,9 +36,17 @@ public class MetricsConfig {
         };
     }
 
-    // You might need to override other system metrics as well
     @Bean
-    public UptimeMetrics uptimeMetrics() {
-        return new UptimeMetrics();
+    public MeterBinder uptimeMetrics() {
+        // Create a simple implementation that doesn't use cgroups
+        return new MeterBinder() {
+            @Override
+            public void bindTo(MeterRegistry registry) {
+                // Add a simple uptime gauge that just returns the JVM uptime
+                registry.gauge("process.uptime",
+                        Math.round(System.currentTimeMillis() / 1000.0 -
+                                java.lang.management.ManagementFactory.getRuntimeMXBean().getStartTime() / 1000.0));
+            }
+        };
     }
 }
