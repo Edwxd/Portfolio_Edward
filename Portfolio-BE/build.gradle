@@ -8,12 +8,20 @@ plugins {
 group = 'com.example'  // Make sure this matches your package structure
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+targetCompatibility = '17'
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+
+configurations {
+    all {
+        exclude group: 'io.micrometer', module: 'micrometer-core'
+    }
+}
+
 
 repositories {
     mavenCentral()
@@ -51,6 +59,9 @@ dependencies {
     // Test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
+
+    implementation 'io.micrometer:micrometer-core:1.12.0'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
 }
 
 tasks.named('test') {
