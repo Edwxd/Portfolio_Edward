@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Portfolio-BE/Portfolio-BE.iml" filepath="$PROJECT_DIR$/Portfolio-BE/Portfolio-BE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Portfolio-BE.aot.iml" filepath="$PROJECT_DIR$/.idea/modules/Portfolio-BE.aot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Portfolio-BE.aotTest.iml" filepath="$PROJECT_DIR$/.idea/modules/Portfolio-BE.aotTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Portfolio-BE/Portfolio.Portfolio-BE.iml" filepath="$PROJECT_DIR$/.idea/modules/Portfolio-BE/Portfolio.Portfolio-BE.iml" />
