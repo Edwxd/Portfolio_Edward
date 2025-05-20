@@ -8,12 +8,10 @@ website:
   domain: portfolioedwardfe-production.up.railway.app  # Use frontend domain
 
 
-# Updated approach using metric filtering
-management:
+custom:
   metrics:
-    enable:
-      system.cpu: false
-      process.cpu: false
+    processor:
+      disabled: true
 
 spring:
   data:

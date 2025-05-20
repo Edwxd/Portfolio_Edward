@@ -38,6 +38,7 @@ dependencies {
 
     // MongoDB Dependencies
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+    implementation 'org.testng:testng:7.1.0'
 
     // Lombok (although it's included via the plugin, let's be explicit)
     compileOnly 'org.projectlombok:lombok'
